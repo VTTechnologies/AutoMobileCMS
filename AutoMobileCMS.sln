@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.438
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMobileCMS", "AutoMobileCMS\AutoMobileCMS.csproj", "{356DFC46-CE73-4D9D-AA06-B39BCF32558E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoMobileCMS.DAL", "AutoMobileCMS.DAL\AutoMobileCMS.DAL.csproj", "{A02FDBC2-EE01-41CB-A8E4-036AAE3DD3DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{356DFC46-CE73-4D9D-AA06-B39BCF32558E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{356DFC46-CE73-4D9D-AA06-B39BCF32558E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{356DFC46-CE73-4D9D-AA06-B39BCF32558E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A02FDBC2-EE01-41CB-A8E4-036AAE3DD3DD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A02FDBC2-EE01-41CB-A8E4-036AAE3DD3DD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A02FDBC2-EE01-41CB-A8E4-036AAE3DD3DD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A02FDBC2-EE01-41CB-A8E4-036AAE3DD3DD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
