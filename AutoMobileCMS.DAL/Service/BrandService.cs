@@ -61,9 +61,6 @@ namespace AutoMobileCMS.DAL.Service
         {
             BrandRepository.Update(brand);
         }
-
-
-
     }
 
 }

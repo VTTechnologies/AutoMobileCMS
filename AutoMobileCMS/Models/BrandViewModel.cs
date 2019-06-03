@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
+
 namespace AutoMobileCMS.Models
 {
     public class BrandViewModel
@@ -15,7 +16,6 @@ namespace AutoMobileCMS.Models
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
-    
         public virtual ICollection<ModelsViewModel> TblModels { get; set; }
     }
 }

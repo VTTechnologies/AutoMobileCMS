@@ -85,10 +85,12 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="IService\IBrandService.cs" />
+    <Compile Include="IService\IModelsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IGenericReporsitory.cs" />
     <Compile Include="Service\BrandService.cs" />
+    <Compile Include="Service\ModelsService.cs" />
     <Compile Include="UnitofWork\IUnitOfWork.cs" />
     <Compile Include="UnitofWork\UnitOfWork.cs" />
   </ItemGroup>
