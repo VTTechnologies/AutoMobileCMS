@@ -290,6 +290,7 @@
     <Content Include="Content\img\banner\banner-3.png" />
     <Content Include="Content\img\banner\banner-4.jpg" />
     <Content Include="Content\img\banner\newsletter-bg.png" />
+    <Content Include="Content\img\bg1.jpg" />
     <Content Include="Content\img\blog\blog-comment1.png" />
     <Content Include="Content\img\blog\blog-comment2.png" />
     <Content Include="Content\img\blog\blog-hm-1.jpg" />
@@ -310,6 +311,7 @@
     <Content Include="Content\img\cart\cart-2.jpg" />
     <Content Include="Content\img\cart\cart-3.jpg" />
     <Content Include="Content\img\favicon.png" />
+    <Content Include="Content\img\green.png" />
     <Content Include="Content\img\icon-img\1.png" />
     <Content Include="Content\img\icon-img\3.png" />
     <Content Include="Content\img\icon-img\4.png" />
@@ -324,12 +326,26 @@
     <Content Include="Content\img\icon-img\payment.png" />
     <Content Include="Content\img\icon-img\quote-1.png" />
     <Content Include="Content\img\icon-img\quote-2.png" />
+    <Content Include="Content\img\icons\button-icons.png" />
+    <Content Include="Content\img\icons\grid-menu-icons.png" />
+    <Content Include="Content\img\icons\menu-icons.png" />
+    <Content Include="Content\img\icons\menu-icons2.png" />
+    <Content Include="Content\img\icons\search.png" />
+    <Content Include="Content\img\icons\search2.png" />
+    <Content Include="Content\img\icons\service-icon-1.png" />
+    <Content Include="Content\img\icons\service-icon-2.png" />
+    <Content Include="Content\img\icons\service-icon-3.png" />
+    <Content Include="Content\img\icons\service-icon-4.png" />
+    <Content Include="Content\img\icons\social-icons2.png" />
+    <Content Include="Content\img\icons\weather-icons.png" />
+    <Content Include="Content\img\icons\weather-main.png" />
     <Content Include="Content\img\instagram\instagram1.jpg" />
     <Content Include="Content\img\instagram\instagram2.jpg" />
     <Content Include="Content\img\instagram\instagram3.jpg" />
     <Content Include="Content\img\instagram\instagram4.jpg" />
     <Content Include="Content\img\instagram\instagram5.jpg" />
     <Content Include="Content\img\instagram\instagram6.jpg" />
+    <Content Include="Content\img\loader.gif" />
     <Content Include="Content\img\loading.gif" />
     <Content Include="Content\img\logo\2.png" />
     <Content Include="Content\img\logo\logo.png" />
@@ -381,6 +397,7 @@
     <Content Include="Content\img\slider\bike-1.png" />
     <Content Include="Content\img\slider\bike-2.png" />
     <Content Include="Content\img\slider\slider-bg.jpg" />
+    <Content Include="Content\img\spinner.gif" />
     <Content Include="Content\img\team\1.jpg" />
     <Content Include="Content\img\team\1.png" />
     <Content Include="Content\img\team\2.jpg" />
@@ -389,6 +406,15 @@
     <Content Include="Content\img\team\newsletter-img.png" />
     <Content Include="Content\img\team\testimonial-1.jpg" />
     <Content Include="Content\img\team\testimonial-2.png" />
+    <Content Include="Content\img\text.png" />
+    <Content Include="Content\img\works\1.jpg" />
+    <Content Include="Content\img\works\2.jpg" />
+    <Content Include="Content\img\works\3.jpg" />
+    <Content Include="Content\img\works\4.jpg" />
+    <Content Include="Content\img\works\5.jpg" />
+    <Content Include="Content\img\works\6.jpg" />
+    <Content Include="Content\img\works\7.jpg" />
+    <Content Include="Content\img\works\8.jpg" />
     <Content Include="Content\Landingpagecss\animate.css" />
     <Content Include="Content\Landingpagecss\bootstrap.min.css" />
     <Content Include="Content\Landingpagecss\camera-slider\camera.css" />
@@ -4457,10 +4483,19 @@
     <Content Include="Views\Home\Shop.cshtml" />
     <Content Include="Views\Product\Details.cshtml" />
     <Content Include="Scripts\LandingPage\style.css.map" />
+    <Content Include="Views\Models\Create.cshtml" />
+    <Content Include="Views\Models\_ModelsList.cshtml" />
+    <Content Include="Views\Dashboard\Index.cshtml" />
+    <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Shared\_AdminLeftMenu.cshtml" />
+    <Content Include="Views\Shared\_DashboardLayout.cshtml" />
+    <Content Include="Views\Shared\_Footer.cshtml" />
+    <Content Include="Views\Shared\_Header.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Content\EPassBook\css\" />
+    <Folder Include="Content\img\ValuesIcons\" />
     <Folder Include="Content\MenuCss\" />
     <Folder Include="Content\Website2\img\portfolio\" />
     <Folder Include="Scripts\Dashboard\" />

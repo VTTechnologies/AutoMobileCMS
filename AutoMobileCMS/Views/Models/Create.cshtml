@@ -160,9 +160,9 @@
                                                 @Html.LabelFor(model => model.ImagePath1, htmlAttributes: new { @class = "control-label col-md-2" })
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                <img id="img1" src="" alt="your image" class="img-thumbnail col-md-12" style="height:200px" />
-                                                <input type="file" value="Upload" id="imgupload1" name="imgupload1" onchange="readURL(this, 'img1')" class="btn btn-primary col-md-7" />
-                                                <input type="button" id="btnimg1cencal" onclick="removeimg('img1','imgupload1')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
+                                                <img id="img3" src="" alt="your image" class="img-thumbnail col-md-12" style="height:200px" />
+                                                <input type="file" value="Upload" id="imgupload3" name="imgupload3" onchange="readURL(this, 'img3')" class="btn btn-primary col-md-7" />
+                                                <input type="button" id="btnimg3cencal" onclick="removeimg('img3','imgupload3')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
                                             </div>
                                         </div>
                                         <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
@@ -170,9 +170,9 @@
                                                 @Html.LabelFor(model => model.ImagePath2, htmlAttributes: new { @class = "control-label col-md-2" })
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                <img id="img2" src="" alt="your image" class="img-thumbnail col-md-12" style="height:200px" />
-                                                <input type="file" value="Upload" id="imgupload2" name="imgupload2" onchange="readURL(this,'img2');" class="btn btn-primary col-md-7" />
-                                                <input type="button" id="btnimg2cencal" onclick="removeimg('img2','imgupload2')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
+                                                <img id="img4" src="" alt="your image" class="img-thumbnail col-md-12" style="height:200px" />
+                                                <input type="file" value="Upload" id="imgupload4" name="imgupload4" onchange="readURL(this,'img4');" class="btn btn-primary col-md-7" />
+                                                <input type="button" id="btnimg4cencal" onclick="removeimg('img4','imgupload4')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
                                             </div>
                                         </div>
                                     </div>
@@ -195,4 +195,46 @@
             changeYear: true
         });
     });
+
+    function removeimg(img, fileupld) {
+        debugger;
+        document.getElementById(img).removeAttribute('src');
+        document.getElementById(fileupld).value = "";
+
+    }
+    function readURL(input, id) {
+        //alert(id);
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            if (id == 'img1') {
+                reader.onload = function (e) {
+                    $('#img1')
+                        .attr('src', e.target.result);
+                };
+            }
+            if (id == 'img2') {
+                reader.onload = function (e) {
+                    $('#img2')
+                        .attr('src', e.target.result);
+                };
+            }
+
+            if (id == 'img3') {
+                reader.onload = function (e) {
+                    $('#img3')
+                        .attr('src', e.target.result);
+                };
+            }
+            if (id == 'img4') {
+                reader.onload = function (e) {
+                    $('#img4')
+                        .attr('src', e.target.result);
+                };
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
 </script>
