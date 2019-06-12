@@ -21,6 +21,7 @@ namespace AutoMobileCMS.Models
         public Nullable<System.DateTime> DateofPurchase { get; set; }
         public string KMDriven { get; set; }
         public Nullable<int> CompanyID { get; set; }
+
         public Nullable<bool> Status { get; set; }
         public string CreatedBy { get; set; }
         public Nullable<System.DateTime> CreatedOn { get; set; }
