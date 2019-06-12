@@ -21,6 +21,9 @@ namespace AutoMobileCMS.Mapper
             models.ModelName = modelsviewmodel.ModelName;
             models.ModelOverview = modelsviewmodel.ModelOverview;
             models.Price = modelsviewmodel.Price;
+            models.KMDriven = modelsviewmodel.KMDriven;
+            models.CompanyID = modelsviewmodel.CompanyID;
+            models.BrandID = modelsviewmodel.BrandID;
             models.Status = modelsviewmodel.Status;
             models.DateofPurchase = modelsviewmodel.DateofPurchase;
             models.CreatedBy = modelsviewmodel.CreatedBy;
@@ -42,6 +45,9 @@ namespace AutoMobileCMS.Mapper
             modelsviewmodel.ModelName = models.ModelName;
             modelsviewmodel.ModelOverview = models.ModelOverview;
             modelsviewmodel.Price = models.Price;
+            modelsviewmodel.KMDriven = models.KMDriven;
+            modelsviewmodel.CompanyID = models.CompanyID;
+            modelsviewmodel.BrandID = models.BrandID;
             modelsviewmodel.Status = models.Status;
             modelsviewmodel.DateofPurchase = models.DateofPurchase;
             modelsviewmodel.CreatedBy = models.CreatedBy;

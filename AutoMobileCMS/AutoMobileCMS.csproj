@@ -191,7 +191,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\CustomHtmlHelepers.cs" />
+    <Compile Include="Helpers\PhotoManager.cs" />
     <Compile Include="Mapper\BrandMapper.cs" />
+    <Compile Include="Mapper\ModelsMapper.cs" />
     <Compile Include="Models\BrandViewModel.cs" />
     <Compile Include="Models\FileViewModel.cs" />
     <Compile Include="Models\ModelsViewModel.cs" />
@@ -4511,7 +4513,6 @@
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
-    <Content Include="Views\Models\UploadImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -4536,6 +4537,7 @@
     <Folder Include="Scripts\EPassBook\plugins\jquery\" />
     <Folder Include="Scripts\EPassBook\plugins\sticky-kit-master\dist\" />
     <Folder Include="Scripts\MenuJs\" />
+    <Folder Include="Uploads\ModelsImages\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
