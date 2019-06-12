@@ -37,7 +37,7 @@
                                         @Html.EditorFor(model => model.ModelID, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.ModelID, "", new { @class = "text-danger" })
                                     </div>
-                                    </div>
+                                </div>
 
 
                                 <div class="form-group">
@@ -48,7 +48,7 @@
                                         @Html.EditorFor(model => model.ModelName, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.ModelName, "", new { @class = "text-danger" })
                                     </div>
-                                    </div>
+                                </div>
 
 
                                 <div class="form-group">
@@ -56,10 +56,10 @@
                                         @Html.LabelFor(model => model.ModelOverview, htmlAttributes: new { @class = "control-label col-md-2" })
                                     </div>
                                     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
-                                        @Html.TextAreaFor(model => model.ModelOverview,5,58, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.TextAreaFor(model => model.ModelOverview, 5, 58, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.ModelOverview, "", new { @class = "text-danger" })
                                     </div>
-                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
@@ -69,7 +69,7 @@
                                         @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
                                     </div>
-                                    </div>
+                                </div>
 
 
 
@@ -81,19 +81,19 @@
                                         @Html.EditorFor(model => model.BrandID, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.BrandID, "", new { @class = "text-danger" })
                                     </div>
-                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                         @Html.LabelFor(model => model.DateofPurchase, htmlAttributes: new { @class = "control-label col-md-2" })
                                     </div>
                                     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
-                                        @Html.DropDownListFor(model => model.TblBrand.BrandName, TempData["brands"] as List<SelectListItem>, "SELECT Brand", new { @class = "form-control", @Id = "ddlbrand" })
+                                        @*@Html.DropDownListFor(model => model.TblBrand.BrandName, TempData["brands"] as List<SelectListItem>, "SELECT Brand", new { @class = "form-control", @Id = "ddlbrand" })*@
 
-                                        @*@Html.EditorFor(model => model.DateofPurchase, new { htmlAttributes = new { @class = "form-control" } })*@
+                                        @Html.EditorFor(model => model.DateofPurchase, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.DateofPurchase, "", new { @class = "text-danger" })
                                     </div>
-                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
@@ -103,24 +103,25 @@
                                         @Html.EditorFor(model => model.KMDriven, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.KMDriven, "", new { @class = "text-danger" })
                                     </div>
-                                    </div>
+                                </div>
 
                                 <div class="form-group">
                                     <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
                                         @Html.LabelFor(model => model.CompanyID, htmlAttributes: new { @class = "control-label col-md-2" })
-                                     </div>
+                                    </div>
                                     <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
                                         @Html.EditorFor(model => model.CompanyID, new { htmlAttributes = new { @class = "form-control" } })
                                         @Html.ValidationMessageFor(model => model.CompanyID, "", new { @class = "text-danger" })
                                     </div>
-                                    </div>
+                                </div>
 
 
 
                                 <div class="form-group">
                                     <div class="col-md-offset-2 col-md-10">
                                         <input type="submit" value="Create" class="btn btn-primary" />
-                                    </div>
+                                        <input type="submit" value="Next"  class="btn btn-primary" />
+                                    </div> 
                                 </div>
 
 
@@ -133,7 +134,7 @@
                                                 @Html.LabelFor(model => model.ImagePath1, htmlAttributes: new { @class = "control-label col-md-2" })
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                <img id="img1" src="" alt="your image" class="img-thumbnail col-md-12" style="height:200px" />
+                                                <img id="img1" src="" alt="your image" class="img-thumbnail col-md-12" style="height:250px" />
                                                 <input type="file" value="Upload" id="imgupload1" name="imgupload1" onchange="readURL(this, 'img1')" class="btn btn-primary col-md-7" />
                                                 <input type="button" id="btnimg1cencal" onclick="removeimg('img1','imgupload1')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
                                             </div>
@@ -143,7 +144,7 @@
                                                 @Html.LabelFor(model => model.ImagePath2, htmlAttributes: new { @class = "control-label col-md-2" })
                                             </div>
                                             <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                                                <img id="img2" src="" alt="your image" class="img-thumbnail col-md-12" style="height:200px" />
+                                                <img id="img2" src="" alt="your image" class="img-thumbnail col-md-12" style="height:250px" />
                                                 <input type="file" value="Upload" id="imgupload2" name="imgupload2" onchange="readURL(this,'img2');" class="btn btn-primary col-md-7" />
                                                 <input type="button" id="btnimg2cencal" onclick="removeimg('img2','imgupload2')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
                                             </div>

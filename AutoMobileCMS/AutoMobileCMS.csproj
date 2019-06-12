@@ -193,6 +193,7 @@
     <Compile Include="Helpers\CustomHtmlHelepers.cs" />
     <Compile Include="Mapper\BrandMapper.cs" />
     <Compile Include="Models\BrandViewModel.cs" />
+    <Compile Include="Models\FileViewModel.cs" />
     <Compile Include="Models\ModelsViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -289,6 +290,12 @@
     <Content Include="Content\img\banner\banner-3.jpg" />
     <Content Include="Content\img\banner\banner-3.png" />
     <Content Include="Content\img\banner\banner-4.jpg" />
+    <Content Include="Content\img\banner\Car-bn-1.png" />
+    <Content Include="Content\img\banner\Car-bn-2.jpeg" />
+    <Content Include="Content\img\banner\Car-bn-3.png" />
+    <Content Include="Content\img\banner\Car-bn-4.png" />
+    <Content Include="Content\img\banner\Car-md-1.jpg" />
+    <Content Include="Content\img\banner\Car-md-2.jpg" />
     <Content Include="Content\img\banner\newsletter-bg.png" />
     <Content Include="Content\img\bg1.jpg" />
     <Content Include="Content\img\blog\blog-comment1.png" />
@@ -303,6 +310,10 @@
     <Content Include="Content\img\blog\blog-hm-7.jpg" />
     <Content Include="Content\img\blog\blog-hm-8.jpg" />
     <Content Include="Content\img\blog\blog-hm-9.jpg" />
+    <Content Include="Content\img\blog\Car-bn-2.jpeg" />
+    <Content Include="Content\img\blog\Car-bn-3.png" />
+    <Content Include="Content\img\blog\Car-bn-4.png" />
+    <Content Include="Content\img\blog\car-last.jpg" />
     <Content Include="Content\img\cart\4.jpg" />
     <Content Include="Content\img\cart\5.jpg" />
     <Content Include="Content\img\cart\6.jpg" />
@@ -374,6 +385,15 @@
     <Content Include="Content\img\product-details\s3-details4.jpg" />
     <Content Include="Content\img\product-details\s3.jpg" />
     <Content Include="Content\img\product-details\s4.jpg" />
+    <Content Include="Content\img\product\Car-md-3.jpg" />
+    <Content Include="Content\img\product\Car-md-4.jpg" />
+    <Content Include="Content\img\product\Car-md-5.jpg" />
+    <Content Include="Content\img\product\Car-pr-1.jpg" />
+    <Content Include="Content\img\product\car-pr-2.jpg" />
+    <Content Include="Content\img\product\car-pr-3.jpg" />
+    <Content Include="Content\img\product\car-pr-4.jpg" />
+    <Content Include="Content\img\product\car-pr-5.jpg" />
+    <Content Include="Content\img\product\car-pr-6.jpg" />
     <Content Include="Content\img\product\product-1.jpg" />
     <Content Include="Content\img\product\product-10.jpg" />
     <Content Include="Content\img\product\product-11.jpg" />
@@ -394,9 +414,9 @@
     <Content Include="Content\img\quick-view\s1.jpg" />
     <Content Include="Content\img\quick-view\s2.jpg" />
     <Content Include="Content\img\quick-view\s3.jpg" />
-    <Content Include="Content\img\slider\bike-1.png" />
-    <Content Include="Content\img\slider\bike-2.png" />
-    <Content Include="Content\img\slider\slider-bg.jpg" />
+    <Content Include="Content\img\slider\car-1.jpg" />
+    <Content Include="Content\img\slider\car-2.jpeg" />
+    <Content Include="Content\img\slider\car-3.jpg" />
     <Content Include="Content\img\spinner.gif" />
     <Content Include="Content\img\team\1.jpg" />
     <Content Include="Content\img\team\1.png" />
@@ -4491,6 +4511,7 @@
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Models\UploadImage.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
