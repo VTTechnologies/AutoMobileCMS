@@ -31,5 +31,7 @@ namespace AutoMobileCMS.DAL.DBModel
         public virtual DbSet<TblModel> TblModels { get; set; }
         public virtual DbSet<TblSold> TblSolds { get; set; }
         public virtual DbSet<TblUser> TblUsers { get; set; }
+        public virtual DbSet<TblRole> TblRoles { get; set; }
+        public virtual DbSet<UserInRole> UserInRoles { get; set; }
     }
 }

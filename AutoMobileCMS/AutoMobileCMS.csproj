@@ -183,6 +183,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\UnityConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModelsController.cs" />
@@ -192,11 +193,16 @@
     </Compile>
     <Compile Include="Helpers\CustomHtmlHelepers.cs" />
     <Compile Include="Helpers\PhotoManager.cs" />
+    <Compile Include="Mapper\UserInRoleMapper.cs" />
+    <Compile Include="Mapper\CompanyMapper.cs" />
+    <Compile Include="Mapper\UserMapper.cs" />
     <Compile Include="Mapper\BrandMapper.cs" />
     <Compile Include="Mapper\ModelsMapper.cs" />
     <Compile Include="Models\BrandViewModel.cs" />
     <Compile Include="Models\FileViewModel.cs" />
     <Compile Include="Models\ModelsViewModel.cs" />
+    <Compile Include="Models\RegisterViewModel.cs" />
+    <Compile Include="Models\UserInRoleViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -284,6 +290,14 @@
     <Content Include="Content\css\style.css" />
     <Content Include="Content\css\themify-icons.css" />
     <Content Include="Content\Error.css" />
+    <Content Include="Content\fonts\icofont.eot" />
+    <Content Include="Content\fonts\icofont.svg" />
+    <Content Include="Content\fonts\icofont.ttf" />
+    <Content Include="Content\fonts\icofont.woff" />
+    <Content Include="Content\fonts\themify.eot" />
+    <Content Include="Content\fonts\themify.svg" />
+    <Content Include="Content\fonts\themify.ttf" />
+    <Content Include="Content\fonts\themify.woff" />
     <Content Include="Content\img\banner\17.jpg" />
     <Content Include="Content\img\banner\banner-1.jpg" />
     <Content Include="Content\img\banner\banner-1.png" />
@@ -4373,20 +4387,6 @@
     <Content Include="Scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Content\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\fonts\FontAwesome.otf" />
-    <Content Include="Content\fonts\icofont.eot" />
-    <Content Include="Content\fonts\icofont.svg" />
-    <Content Include="Content\fonts\icofont.ttf" />
-    <Content Include="Content\fonts\icofont.woff" />
-    <Content Include="Content\fonts\themify.eot" />
-    <Content Include="Content\fonts\themify.svg" />
-    <Content Include="Content\fonts\themify.ttf" />
-    <Content Include="Content\fonts\themify.woff" />
     <Content Include="Content\adminlte\css\adminlte.css.map" />
     <Content Include="Content\adminlte\css\adminlte.min.css.map" />
     <Content Include="Content\Website2\img\header-bg.psd" />
@@ -4437,6 +4437,12 @@
     <Content Include="Scripts\adminlte\components\jquery\dist\jquery.slim.min.map" />
     <Content Include="Scripts\adminlte\plugins\input-mask\phone-codes\phone-be.json" />
     <Content Include="Scripts\adminlte\plugins\input-mask\phone-codes\phone-codes.json" />
+    <Content Include="Content\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\fonts\fontawesome-webfont.svg" />
+    <Content Include="Content\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\fonts\FontAwesome.otf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\CommonJs\Common.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -4513,6 +4519,7 @@
     <Content Include="Views\Shared\_DashboardLayout.cshtml" />
     <Content Include="Views\Shared\_Footer.cshtml" />
     <Content Include="Views\Shared\_Header.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

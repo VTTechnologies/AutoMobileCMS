@@ -50,7 +50,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="DBModel\Model1.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -78,17 +77,29 @@
     <Compile Include="DBModel\TblModel.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBModel\TblRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBModel\TblSold.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBModel\TblUser.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBModel\UserInRole.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="IService\IUserInRoleService.cs" />
+    <Compile Include="IService\IRoleService.cs" />
+    <Compile Include="IService\IUserService.cs" />
     <Compile Include="IService\IBrandService.cs" />
     <Compile Include="IService\IModelsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IGenericReporsitory.cs" />
+    <Compile Include="Service\UserInRoleService.cs" />
+    <Compile Include="Service\RoleService.cs" />
+    <Compile Include="Service\UserService .cs" />
     <Compile Include="Service\BrandService.cs" />
     <Compile Include="Service\ModelsService.cs" />
     <Compile Include="UnitofWork\IUnitOfWork.cs" />

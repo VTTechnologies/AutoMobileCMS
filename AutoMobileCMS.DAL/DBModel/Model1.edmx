@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="AUTOMOBILECMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="AUTOMOBILECMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="TblBrand">
           <Key>
             <PropertyRef Name="BrandID" />
@@ -66,6 +66,14 @@
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="500" />
           <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
+        <EntityType Name="TblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nvarchar" MaxLength="50" />
+          <Property Name="IsActive" Type="bit" />
+        </EntityType>
         <EntityType Name="TblSold">
           <Key>
             <PropertyRef Name="SoldID" />
@@ -97,6 +105,14 @@
           <Property Name="UpdatedBy" Type="nchar" MaxLength="500" />
           <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
+        <EntityType Name="UserInRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="int" />
+          <Property Name="RoleId" Type="int" />
+        </EntityType>
         <Association Name="FK_Company_Users">
           <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="0..1" />
           <End Role="TblCompany" Type="Self.TblCompany" Multiplicity="*" />
@@ -121,13 +137,39 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Association Name="FK_UserInRole_TblRole">
+          <End Role="TblRole" Type="Self.TblRole" Multiplicity="0..1" />
+          <End Role="UserInRole" Type="Self.UserInRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserInRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInRole_TblUsers">
+          <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="0..1" />
+          <End Role="UserInRole" Type="Self.UserInRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserInRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <EntityContainer Name="AUTOMOBILECMSModelStoreContainer">
           <EntitySet Name="TblBrand" EntityType="Self.TblBrand" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCompany" EntityType="Self.TblCompany" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblGallery" EntityType="Self.TblGallery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblModels" EntityType="Self.TblModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblRole" EntityType="Self.TblRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblSold" EntityType="Self.TblSold" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblUsers" EntityType="Self.TblUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserInRole" EntityType="Self.UserInRole" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Company_Users" Association="Self.FK_Company_Users">
             <End Role="TblUsers" EntitySet="TblUsers" />
             <End Role="TblCompany" EntitySet="TblCompany" />
@@ -136,9 +178,16 @@
             <End Role="TblBrand" EntitySet="TblBrand" />
             <End Role="TblModels" EntitySet="TblModels" />
           </AssociationSet>
+          <AssociationSet Name="FK_UserInRole_TblRole" Association="Self.FK_UserInRole_TblRole">
+            <End Role="TblRole" EntitySet="TblRole" />
+            <End Role="UserInRole" EntitySet="UserInRole" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInRole_TblUsers" Association="Self.FK_UserInRole_TblUsers">
+            <End Role="TblUsers" EntitySet="TblUsers" />
+            <End Role="UserInRole" EntitySet="UserInRole" />
+          </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AUTOMOBILECMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -237,6 +286,7 @@
           <Property Name="UpdatedBy" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
           <NavigationProperty Name="TblCompanies" Relationship="Self.FK_Company_Users" FromRole="TblUsers" ToRole="TblCompany" />
+          <NavigationProperty Name="UserInRoles" Relationship="AUTOMOBILECMSModel.FK_UserInRole_TblUsers" FromRole="TblUser" ToRole="UserInRole" />
         </EntityType>
         <Association Name="FK_TblModels_TblBrand">
           <End Role="TblBrand" Type="Self.TblBrand" Multiplicity="0..1" />
@@ -277,7 +327,60 @@
             <End Role="TblUsers" EntitySet="TblUsers" />
             <End Role="TblCompany" EntitySet="TblCompanies" />
           </AssociationSet>
+          <EntitySet Name="TblRoles" EntityType="AUTOMOBILECMSModel.TblRole" />
+          <EntitySet Name="UserInRoles" EntityType="AUTOMOBILECMSModel.UserInRole" />
+          <AssociationSet Name="FK_UserInRole_TblRole" Association="AUTOMOBILECMSModel.FK_UserInRole_TblRole">
+            <End Role="TblRole" EntitySet="TblRoles" />
+            <End Role="UserInRole" EntitySet="UserInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInRole_TblUsers" Association="AUTOMOBILECMSModel.FK_UserInRole_TblUsers">
+            <End Role="TblUser" EntitySet="TblUsers" />
+            <End Role="UserInRole" EntitySet="UserInRoles" />
+          </AssociationSet>
         </EntityContainer>
+        <EntityType Name="TblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="UserInRoles" Relationship="AUTOMOBILECMSModel.FK_UserInRole_TblRole" FromRole="TblRole" ToRole="UserInRole" />
+        </EntityType>
+        <EntityType Name="UserInRole">
+          <Key>
+            <PropertyRef Name="UserRoleId" />
+          </Key>
+          <Property Name="UserRoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="Int32" />
+          <Property Name="RoleId" Type="Int32" />
+          <NavigationProperty Name="TblRole" Relationship="AUTOMOBILECMSModel.FK_UserInRole_TblRole" FromRole="UserInRole" ToRole="TblRole" />
+          <NavigationProperty Name="TblUser" Relationship="AUTOMOBILECMSModel.FK_UserInRole_TblUsers" FromRole="UserInRole" ToRole="TblUser" />
+        </EntityType>
+        <Association Name="FK_UserInRole_TblRole">
+          <End Type="AUTOMOBILECMSModel.TblRole" Role="TblRole" Multiplicity="0..1" />
+          <End Type="AUTOMOBILECMSModel.UserInRole" Role="UserInRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblRole">
+              <PropertyRef Name="RoleId" />
+            </Principal>
+            <Dependent Role="UserInRole">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UserInRole_TblUsers">
+          <End Type="AUTOMOBILECMSModel.TblUser" Role="TblUser" Multiplicity="0..1" />
+          <End Type="AUTOMOBILECMSModel.UserInRole" Role="UserInRole" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="UserInRole">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -379,6 +482,24 @@
                 <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
                 <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblRoles">
+            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblRole">
+              <MappingFragment StoreEntitySet="TblRole">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserInRoles">
+            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.UserInRole">
+              <MappingFragment StoreEntitySet="UserInRole">
+                <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

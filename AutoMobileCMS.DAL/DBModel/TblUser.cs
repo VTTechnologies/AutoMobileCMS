@@ -17,6 +17,7 @@ namespace AutoMobileCMS.DAL.DBModel
         public TblUser()
         {
             this.TblCompanies = new HashSet<TblCompany>();
+            this.UserInRoles = new HashSet<UserInRole>();
         }
     
         public int UserID { get; set; }
@@ -31,5 +32,6 @@ namespace AutoMobileCMS.DAL.DBModel
         public Nullable<System.DateTime> UpdatedOn { get; set; }
     
         public virtual ICollection<TblCompany> TblCompanies { get; set; }
+        public virtual ICollection<UserInRole> UserInRoles { get; set; }
     }
 }

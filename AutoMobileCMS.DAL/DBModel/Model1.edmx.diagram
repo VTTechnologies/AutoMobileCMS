@@ -13,6 +13,10 @@
         <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblUser" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="AUTOMOBILECMSModel.FK_TblModels_TblBrand" ManuallyRouted="false" />
         <AssociationConnector Association="AUTOMOBILECMSModel.FK_Company_Users" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblRole" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.UserInRole" Width="1.5" PointX="3" PointY="0.75" />
+        <AssociationConnector Association="AUTOMOBILECMSModel.FK_UserInRole_TblRole" />
+        <AssociationConnector Association="AUTOMOBILECMSModel.FK_UserInRole_TblUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
