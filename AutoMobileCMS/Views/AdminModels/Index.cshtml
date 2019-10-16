@@ -1,0 +1,134 @@
+﻿@model IEnumerable<AutoMobileCMS.Models.ModelsViewModel>
+
+@{
+    ViewBag.Title = "_ModelsList";
+    string a = @ViewBag.templatename;
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Models
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Models</a></li>
+        </ol>
+    </section>
+    <section class="content" id="Index">
+        <div class="row">
+            <div class="col-xs-12">
+                @Html.ActionLink("Create New", "Create", "Models", null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                    </div>
+                    <div class="box-body">
+                        <div class="row">
+                            <div class="col-md-2">
+                                @Html.Label("Select Stage")
+                            </div>
+                            <div class="col-md-4">
+                                @Html.DropDownListFor(model => model.FirstOrDefault().Users.UserName, TempData["users"] as List<SelectListItem>, "Select Users", new { @class = "form-control", @Id = "selectstage" })
+                                @*@Html.DropDownListFor(model => model.FirstOrDefault().CityMaster.CityName, TempData["Cities"] as List<SelectListItem>, "SELECT CITY", new { @class = "form-control", @Id = "selectCity" })*@
+                            </div>
+                        </div>
+                        <table id="modelslist" class="table table-bordered table-striped">
+                            <thead>
+                                <tr>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ModelID)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.ModelName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.BrandName)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.Price)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.DateofPurchase)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.KMDriven)
+                                    </th>
+                                    <th>
+                                        @Html.DisplayNameFor(model => model.UserName)
+                                    </th>
+
+                                    <th></th>
+                                </tr>
+                            </thead>
+
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ModelID)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ModelName)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BrandName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Price)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DateofPurchase)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.KMDriven)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.UserName)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                                            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                                            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                                        </td>
+                                    </tr>
+
+                                }
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script type="text/javascript">
+    function ReloadPage() {
+        window.location = '@Url.Action("Index")';
+    }
+    $(document).ready(function () {
+        $('#modelslist').dataTable();
+        var dtBeneficiary = $('#modelslist').dataTable();
+
+        $('#selectstage').on('change', function () {
+            debugger
+            var selectedValue = $(this).val();
+            alert(selectedValue);
+            if (selectedValue == "") {
+                window.ReloadPage();
+            }
+            else {
+                debugger;
+                dtBeneficiary.fnFilter("^" + selectedValue + "$", 3, true);
+            }
+        });
+    });
+</script>

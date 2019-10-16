@@ -17,54 +17,71 @@
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="500" />
           <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
+        <EntityType Name="TblCities">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CityName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="StateID" Type="int" Nullable="false" />
+        </EntityType>
         <EntityType Name="TblCompany">
           <Key>
             <PropertyRef Name="CompanyID" />
           </Key>
           <Property Name="CompanyID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserID" Type="int" />
-          <Property Name="CompanyName" Type="nchar" MaxLength="500" />
+          <Property Name="CompanyName" Type="nvarchar(max)" />
           <Property Name="Address" Type="nvarchar(max)" />
-          <Property Name="Logo" Type="nvarchar(max)" />
+          <Property Name="ContactNo" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="EmailID" Type="nvarchar" MaxLength="50" />
           <Property Name="Status" Type="bit" />
-          <Property Name="CreatedBy" Type="nvarchar" MaxLength="500" />
-          <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="500" />
-          <Property Name="UpdatedOn" Type="datetime" />
         </EntityType>
-        <EntityType Name="TblGallery">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'AUTOMOBILECMS.dbo.TblCountries' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TblCountries">
           <Key>
-            <PropertyRef Name="GalleryID" />
+            <PropertyRef Name="CountryID" />
+            <PropertyRef Name="CountryCode" />
+            <PropertyRef Name="CountryName" />
           </Key>
-          <Property Name="GalleryID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="ImagePath" Type="nchar" MaxLength="10" />
-          <Property Name="Status" Type="bit" />
-          <Property Name="CreatedBy" Type="nvarchar" MaxLength="500" />
-          <Property Name="CreatedOn" Type="datetime" />
-          <Property Name="UpdatedBy" Type="nvarchar" MaxLength="500" />
-          <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+          <Property Name="CountryCode" Type="char" MaxLength="2" Nullable="false" />
+          <Property Name="CountryName" Type="varchar" MaxLength="45" Nullable="false" />
         </EntityType>
-        <EntityType Name="TblModels">
+        <EntityType Name="TblProductImages">
           <Key>
-            <PropertyRef Name="ModelID" />
+            <PropertyRef Name="ProductImagesID" />
           </Key>
-          <Property Name="ModelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductImagesID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="ImagePath1" Type="nvarchar(max)" />
           <Property Name="ImagePath2" Type="nvarchar(max)" />
           <Property Name="ImagePath3" Type="nvarchar(max)" />
           <Property Name="ImagePath4" Type="nvarchar(max)" />
-          <Property Name="ModelOverview" Type="nvarchar(max)" />
+          <Property Name="ImagePath5" Type="nvarchar(max)" />
+          <Property Name="ImagePath6" Type="nvarchar(max)" />
+          <Property Name="ImagePath7" Type="nvarchar(max)" />
+          <Property Name="ImagePath8" Type="nvarchar(max)" />
+          <Property Name="ImagePath9" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="TblProducts">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductOverview" Type="nvarchar(max)" />
           <Property Name="Price" Type="numeric" Precision="18" Scale="3" />
-          <Property Name="ModelName" Type="nvarchar" MaxLength="500" />
+          <Property Name="ProductName" Type="nvarchar" MaxLength="500" />
           <Property Name="BrandID" Type="int" />
           <Property Name="DateofPurchase" Type="datetime" />
           <Property Name="KMDriven" Type="nchar" MaxLength="200" />
-          <Property Name="CompanyID" Type="int" />
           <Property Name="Status" Type="bit" />
           <Property Name="CreatedBy" Type="nvarchar" MaxLength="500" />
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="500" />
           <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="IsSold" Type="bit" />
+          <Property Name="UserID" Type="int" />
         </EntityType>
         <EntityType Name="TblRole">
           <Key>
@@ -80,8 +97,8 @@
           </Key>
           <Property Name="SoldID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ImagePath" Type="nvarchar(max)" />
-          <Property Name="CustomerName" Type="nchar" MaxLength="200" />
-          <Property Name="Modal" Type="nchar" MaxLength="200" />
+          <Property Name="CustomerName" Type="nvarchar(max)" />
+          <Property Name="ModalID" Type="int" />
           <Property Name="Date" Type="datetime" />
           <Property Name="Description" Type="nvarchar(max)" />
           <Property Name="Status" Type="bit" />
@@ -89,12 +106,31 @@
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="UpdatedBy" Type="nvarchar" MaxLength="500" />
           <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="UserID" Type="int" />
+        </EntityType>
+        <EntityType Name="TblStates">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StateName" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTemplate">
+          <Key>
+            <PropertyRef Name="template_id" />
+          </Key>
+          <Property Name="template_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="template_name" Type="nvarchar(max)" />
+          <Property Name="isactive" Type="bit" />
         </EntityType>
         <EntityType Name="TblUsers">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar(max)" />
+          <Property Name="LastName" Type="nvarchar(max)" />
           <Property Name="UserName" Type="nvarchar(max)" />
           <Property Name="Email" Type="nvarchar" MaxLength="50" />
           <Property Name="ContactNo" Type="numeric" Precision="18" Scale="0" />
@@ -104,6 +140,10 @@
           <Property Name="CreatedOn" Type="datetime" />
           <Property Name="UpdatedBy" Type="nchar" MaxLength="500" />
           <Property Name="UpdatedOn" Type="datetime" />
+          <Property Name="IsLoggedIn" Type="bit" />
+          <Property Name="template_id" Type="int" />
+          <Property Name="CompanyID" Type="int" />
+          <Property Name="CityID" Type="int" />
         </EntityType>
         <EntityType Name="UserInRole">
           <Key>
@@ -113,27 +153,99 @@
           <Property Name="UserId" Type="int" />
           <Property Name="RoleId" Type="int" />
         </EntityType>
-        <Association Name="FK_Company_Users">
-          <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="0..1" />
-          <End Role="TblCompany" Type="Self.TblCompany" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblUsers">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="TblCompany">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_TblModels_TblBrand">
-          <End Role="TblBrand" Type="Self.TblBrand" Multiplicity="0..1" />
-          <End Role="TblModels" Type="Self.TblModels" Multiplicity="*" />
+        <Association Name="FK_TblBrand_TblBrand">
+          <End Role="TblBrand" Type="Self.TblBrand" Multiplicity="1" />
+          <End Role="TblBrand1" Type="Self.TblBrand" Multiplicity="0..1" />
           <ReferentialConstraint>
             <Principal Role="TblBrand">
               <PropertyRef Name="BrandID" />
             </Principal>
-            <Dependent Role="TblModels">
+            <Dependent Role="TblBrand1">
               <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProductImages_TblProducts">
+          <End Role="TblProducts" Type="Self.TblProducts" Multiplicity="1" />
+          <End Role="TblProductImages" Type="Self.TblProductImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProducts">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="TblProductImages">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProducts_TblBrand">
+          <End Role="TblBrand" Type="Self.TblBrand" Multiplicity="0..1" />
+          <End Role="TblProducts" Type="Self.TblProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBrand">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="TblProducts">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProducts_TblUsers">
+          <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="0..1" />
+          <End Role="TblProducts" Type="Self.TblProducts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="TblProducts">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSold_TblUsers">
+          <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="0..1" />
+          <End Role="TblSold" Type="Self.TblSold" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblUsers">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="TblSold">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblUsers_TblCities">
+          <End Role="TblCities" Type="Self.TblCities" Multiplicity="0..1" />
+          <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCities">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="TblUsers">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblUsers_TblCompany">
+          <End Role="TblCompany" Type="Self.TblCompany" Multiplicity="0..1" />
+          <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCompany">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="TblUsers">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblUsers_tblTemplate">
+          <End Role="tblTemplate" Type="Self.tblTemplate" Multiplicity="0..1" />
+          <End Role="TblUsers" Type="Self.TblUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTemplate">
+              <PropertyRef Name="template_id" />
+            </Principal>
+            <Dependent Role="TblUsers">
+              <PropertyRef Name="template_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -161,22 +273,64 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
+        <Function Name="sp_InsertSoldModels" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="modelid" Type="int" Mode="In" />
+          <Parameter Name="customername" Type="nvarchar" Mode="In" />
+          <Parameter Name="description" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="imgpath" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="createby" Type="nvarchar" Mode="In" />
+          <Parameter Name="userid" Type="int" Mode="In" />
+        </Function>
         <EntityContainer Name="AUTOMOBILECMSModelStoreContainer">
           <EntitySet Name="TblBrand" EntityType="Self.TblBrand" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblCities" EntityType="Self.TblCities" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblCompany" EntityType="Self.TblCompany" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TblGallery" EntityType="Self.TblGallery" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="TblModels" EntityType="Self.TblModels" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblProductImages" EntityType="Self.TblProductImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblProducts" EntityType="Self.TblProducts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblRole" EntityType="Self.TblRole" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblSold" EntityType="Self.TblSold" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TblStates" EntityType="Self.TblStates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTemplate" EntityType="Self.tblTemplate" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="TblUsers" EntityType="Self.TblUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInRole" EntityType="Self.UserInRole" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK_Company_Users" Association="Self.FK_Company_Users">
-            <End Role="TblUsers" EntitySet="TblUsers" />
-            <End Role="TblCompany" EntitySet="TblCompany" />
-          </AssociationSet>
-          <AssociationSet Name="FK_TblModels_TblBrand" Association="Self.FK_TblModels_TblBrand">
+          <EntitySet Name="TblCountries" EntityType="Self.TblCountries" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TblCountries].[CountryID] AS [CountryID], 
+    [TblCountries].[CountryCode] AS [CountryCode], 
+    [TblCountries].[CountryName] AS [CountryName]
+    FROM [dbo].[TblCountries] AS [TblCountries]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_TblBrand_TblBrand" Association="Self.FK_TblBrand_TblBrand">
             <End Role="TblBrand" EntitySet="TblBrand" />
-            <End Role="TblModels" EntitySet="TblModels" />
+            <End Role="TblBrand1" EntitySet="TblBrand" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProductImages_TblProducts" Association="Self.FK_TblProductImages_TblProducts">
+            <End Role="TblProducts" EntitySet="TblProducts" />
+            <End Role="TblProductImages" EntitySet="TblProductImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProducts_TblBrand" Association="Self.FK_TblProducts_TblBrand">
+            <End Role="TblBrand" EntitySet="TblBrand" />
+            <End Role="TblProducts" EntitySet="TblProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProducts_TblUsers" Association="Self.FK_TblProducts_TblUsers">
+            <End Role="TblUsers" EntitySet="TblUsers" />
+            <End Role="TblProducts" EntitySet="TblProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSold_TblUsers" Association="Self.FK_TblSold_TblUsers">
+            <End Role="TblUsers" EntitySet="TblUsers" />
+            <End Role="TblSold" EntitySet="TblSold" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblUsers_TblCities" Association="Self.FK_TblUsers_TblCities">
+            <End Role="TblCities" EntitySet="TblCities" />
+            <End Role="TblUsers" EntitySet="TblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblUsers_TblCompany" Association="Self.FK_TblUsers_TblCompany">
+            <End Role="TblCompany" EntitySet="TblCompany" />
+            <End Role="TblUsers" EntitySet="TblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblUsers_tblTemplate" Association="Self.FK_TblUsers_tblTemplate">
+            <End Role="tblTemplate" EntitySet="tblTemplate" />
+            <End Role="TblUsers" EntitySet="TblUsers" />
           </AssociationSet>
           <AssociationSet Name="FK_UserInRole_TblRole" Association="Self.FK_UserInRole_TblRole">
             <End Role="TblRole" EntitySet="TblRole" />
@@ -191,6 +345,68 @@
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="AUTOMOBILECMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="AUTOMOBILECMSEntities2" annotation:LazyLoadingEnabled="true">
+          <FunctionImport Name="sp_InsertSoldModels">
+            <Parameter Name="modelid" Mode="In" Type="Int32" />
+            <Parameter Name="customername" Mode="In" Type="String" />
+            <Parameter Name="description" Mode="In" Type="String" />
+            <Parameter Name="imgpath" Mode="In" Type="String" />
+            <Parameter Name="createby" Mode="In" Type="String" />
+            <Parameter Name="userid" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <EntitySet Name="TblBrands" EntityType="AUTOMOBILECMSModel.TblBrand" />
+          <EntitySet Name="TblCities" EntityType="AUTOMOBILECMSModel.TblCity" />
+          <EntitySet Name="TblCompanies" EntityType="AUTOMOBILECMSModel.TblCompany" />
+          <EntitySet Name="TblProductImages" EntityType="AUTOMOBILECMSModel.TblProductImage" />
+          <EntitySet Name="TblProducts" EntityType="AUTOMOBILECMSModel.TblProduct" />
+          <EntitySet Name="TblRoles" EntityType="AUTOMOBILECMSModel.TblRole" />
+          <EntitySet Name="TblSolds" EntityType="AUTOMOBILECMSModel.TblSold" />
+          <EntitySet Name="TblStates" EntityType="AUTOMOBILECMSModel.TblState" />
+          <EntitySet Name="tblTemplates" EntityType="AUTOMOBILECMSModel.tblTemplate" />
+          <EntitySet Name="TblUsers" EntityType="AUTOMOBILECMSModel.TblUser" />
+          <EntitySet Name="UserInRoles" EntityType="AUTOMOBILECMSModel.UserInRole" />
+          <EntitySet Name="TblCountries" EntityType="AUTOMOBILECMSModel.TblCountry" />
+          <AssociationSet Name="FK_TblBrand_TblBrand" Association="AUTOMOBILECMSModel.FK_TblBrand_TblBrand">
+            <End Role="TblBrand" EntitySet="TblBrands" />
+            <End Role="TblBrand1" EntitySet="TblBrands" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProducts_TblBrand" Association="AUTOMOBILECMSModel.FK_TblProducts_TblBrand">
+            <End Role="TblBrand" EntitySet="TblBrands" />
+            <End Role="TblProduct" EntitySet="TblProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblUsers_TblCities" Association="AUTOMOBILECMSModel.FK_TblUsers_TblCities">
+            <End Role="TblCity" EntitySet="TblCities" />
+            <End Role="TblUser" EntitySet="TblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblUsers_TblCompany" Association="AUTOMOBILECMSModel.FK_TblUsers_TblCompany">
+            <End Role="TblCompany" EntitySet="TblCompanies" />
+            <End Role="TblUser" EntitySet="TblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProductImages_TblProducts" Association="AUTOMOBILECMSModel.FK_TblProductImages_TblProducts">
+            <End Role="TblProduct" EntitySet="TblProducts" />
+            <End Role="TblProductImage" EntitySet="TblProductImages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblProducts_TblUsers" Association="AUTOMOBILECMSModel.FK_TblProducts_TblUsers">
+            <End Role="TblUser" EntitySet="TblUsers" />
+            <End Role="TblProduct" EntitySet="TblProducts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInRole_TblRole" Association="AUTOMOBILECMSModel.FK_UserInRole_TblRole">
+            <End Role="TblRole" EntitySet="TblRoles" />
+            <End Role="UserInRole" EntitySet="UserInRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblSold_TblUsers" Association="AUTOMOBILECMSModel.FK_TblSold_TblUsers">
+            <End Role="TblUser" EntitySet="TblUsers" />
+            <End Role="TblSold" EntitySet="TblSolds" />
+          </AssociationSet>
+          <AssociationSet Name="FK_TblUsers_tblTemplate" Association="AUTOMOBILECMSModel.FK_TblUsers_tblTemplate">
+            <End Role="tblTemplate" EntitySet="tblTemplates" />
+            <End Role="TblUser" EntitySet="TblUsers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UserInRole_TblUsers" Association="AUTOMOBILECMSModel.FK_UserInRole_TblUsers">
+            <End Role="TblUser" EntitySet="TblUsers" />
+            <End Role="UserInRole" EntitySet="UserInRoles" />
+          </AssociationSet>
+        </EntityContainer>
         <EntityType Name="TblBrand">
           <Key>
             <PropertyRef Name="BrandID" />
@@ -202,58 +418,78 @@
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblModels" Relationship="Self.FK_TblModels_TblBrand" FromRole="TblBrand" ToRole="TblModels" />
+          <NavigationProperty Name="TblBrand1" Relationship="AUTOMOBILECMSModel.FK_TblBrand_TblBrand" FromRole="TblBrand" ToRole="TblBrand1" />
+          <NavigationProperty Name="TblBrand2" Relationship="AUTOMOBILECMSModel.FK_TblBrand_TblBrand" FromRole="TblBrand1" ToRole="TblBrand" />
+          <NavigationProperty Name="TblProducts" Relationship="AUTOMOBILECMSModel.FK_TblProducts_TblBrand" FromRole="TblBrand" ToRole="TblProduct" />
+        </EntityType>
+        <EntityType Name="TblCity">
+          <Key>
+            <PropertyRef Name="CityID" />
+          </Key>
+          <Property Name="CityID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CityName" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="StateID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="TblUsers" Relationship="AUTOMOBILECMSModel.FK_TblUsers_TblCities" FromRole="TblCity" ToRole="TblUser" />
         </EntityType>
         <EntityType Name="TblCompany">
           <Key>
             <PropertyRef Name="CompanyID" />
           </Key>
           <Property Name="CompanyID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserID" Type="Int32" />
-          <Property Name="CompanyName" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
+          <Property Name="CompanyName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="Logo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ContactNo" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="EmailID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblUser" Relationship="Self.FK_Company_Users" FromRole="TblCompany" ToRole="TblUsers" />
+          <NavigationProperty Name="TblUsers" Relationship="AUTOMOBILECMSModel.FK_TblUsers_TblCompany" FromRole="TblCompany" ToRole="TblUser" />
         </EntityType>
-        <EntityType Name="TblGallery">
+        <EntityType Name="TblProductImage">
           <Key>
-            <PropertyRef Name="GalleryID" />
+            <PropertyRef Name="ProductImagesID" />
           </Key>
-          <Property Name="GalleryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="ImagePath" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
-          <Property Name="Status" Type="Boolean" />
-          <Property Name="CreatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="CreatedOn" Type="DateTime" Precision="3" />
-          <Property Name="UpdatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="TblModel">
-          <Key>
-            <PropertyRef Name="ModelID" />
-          </Key>
-          <Property Name="ModelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductImagesID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="ImagePath1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ImagePath2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ImagePath3" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ImagePath4" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="ModelOverview" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath5" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath6" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath7" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath8" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImagePath9" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="TblProduct" Relationship="AUTOMOBILECMSModel.FK_TblProductImages_TblProducts" FromRole="TblProductImage" ToRole="TblProduct" />
+        </EntityType>
+        <EntityType Name="TblProduct">
+          <Key>
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="ProductID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductOverview" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Price" Type="Decimal" Precision="18" Scale="3" />
-          <Property Name="ModelName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ProductName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="BrandID" Type="Int32" />
           <Property Name="DateofPurchase" Type="DateTime" Precision="3" />
           <Property Name="KMDriven" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-          <Property Name="CompanyID" Type="Int32" />
           <Property Name="Status" Type="Boolean" />
           <Property Name="CreatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblBrand" Relationship="Self.FK_TblModels_TblBrand" FromRole="TblModels" ToRole="TblBrand" />
+          <Property Name="IsSold" Type="Boolean" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="TblBrand" Relationship="AUTOMOBILECMSModel.FK_TblProducts_TblBrand" FromRole="TblProduct" ToRole="TblBrand" />
+          <NavigationProperty Name="TblProductImages" Relationship="AUTOMOBILECMSModel.FK_TblProductImages_TblProducts" FromRole="TblProduct" ToRole="TblProductImage" />
+          <NavigationProperty Name="TblUser" Relationship="AUTOMOBILECMSModel.FK_TblProducts_TblUsers" FromRole="TblProduct" ToRole="TblUser" />
+        </EntityType>
+        <EntityType Name="TblRole">
+          <Key>
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Boolean" />
+          <NavigationProperty Name="UserInRoles" Relationship="AUTOMOBILECMSModel.FK_UserInRole_TblRole" FromRole="TblRole" ToRole="UserInRole" />
         </EntityType>
         <EntityType Name="TblSold">
           <Key>
@@ -261,8 +497,8 @@
           </Key>
           <Property Name="SoldID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="ImagePath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="CustomerName" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
-          <Property Name="Modal" Type="String" MaxLength="200" FixedLength="true" Unicode="true" />
+          <Property Name="CustomerName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ModalID" Type="Int32" />
           <Property Name="Date" Type="DateTime" Precision="3" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Status" Type="Boolean" />
@@ -270,12 +506,33 @@
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
+          <Property Name="UserID" Type="Int32" />
+          <NavigationProperty Name="TblUser" Relationship="AUTOMOBILECMSModel.FK_TblSold_TblUsers" FromRole="TblSold" ToRole="TblUser" />
+        </EntityType>
+        <EntityType Name="TblState">
+          <Key>
+            <PropertyRef Name="StateID" />
+          </Key>
+          <Property Name="StateID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StateName" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="tblTemplate">
+          <Key>
+            <PropertyRef Name="template_id" />
+          </Key>
+          <Property Name="template_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="template_name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="isactive" Type="Boolean" />
+          <NavigationProperty Name="TblUsers" Relationship="AUTOMOBILECMSModel.FK_TblUsers_tblTemplate" FromRole="tblTemplate" ToRole="TblUser" />
         </EntityType>
         <EntityType Name="TblUser">
           <Key>
             <PropertyRef Name="UserID" />
           </Key>
           <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="ContactNo" Type="Decimal" Precision="18" Scale="0" />
@@ -285,67 +542,16 @@
           <Property Name="CreatedOn" Type="DateTime" Precision="3" />
           <Property Name="UpdatedBy" Type="String" MaxLength="500" FixedLength="true" Unicode="true" />
           <Property Name="UpdatedOn" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="TblCompanies" Relationship="Self.FK_Company_Users" FromRole="TblUsers" ToRole="TblCompany" />
+          <Property Name="IsLoggedIn" Type="Boolean" />
+          <Property Name="template_id" Type="Int32" />
+          <Property Name="CompanyID" Type="Int32" />
+          <Property Name="CityID" Type="Int32" />
+          <NavigationProperty Name="TblCity" Relationship="AUTOMOBILECMSModel.FK_TblUsers_TblCities" FromRole="TblUser" ToRole="TblCity" />
+          <NavigationProperty Name="TblCompany" Relationship="AUTOMOBILECMSModel.FK_TblUsers_TblCompany" FromRole="TblUser" ToRole="TblCompany" />
+          <NavigationProperty Name="TblProducts" Relationship="AUTOMOBILECMSModel.FK_TblProducts_TblUsers" FromRole="TblUser" ToRole="TblProduct" />
+          <NavigationProperty Name="TblSolds" Relationship="AUTOMOBILECMSModel.FK_TblSold_TblUsers" FromRole="TblUser" ToRole="TblSold" />
+          <NavigationProperty Name="tblTemplate" Relationship="AUTOMOBILECMSModel.FK_TblUsers_tblTemplate" FromRole="TblUser" ToRole="tblTemplate" />
           <NavigationProperty Name="UserInRoles" Relationship="AUTOMOBILECMSModel.FK_UserInRole_TblUsers" FromRole="TblUser" ToRole="UserInRole" />
-        </EntityType>
-        <Association Name="FK_TblModels_TblBrand">
-          <End Role="TblBrand" Type="Self.TblBrand" Multiplicity="0..1" />
-          <End Role="TblModels" Type="Self.TblModel" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblBrand">
-              <PropertyRef Name="BrandID" />
-            </Principal>
-            <Dependent Role="TblModels">
-              <PropertyRef Name="BrandID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK_Company_Users">
-          <End Role="TblUsers" Type="Self.TblUser" Multiplicity="0..1" />
-          <End Role="TblCompany" Type="Self.TblCompany" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="TblUsers">
-              <PropertyRef Name="UserID" />
-            </Principal>
-            <Dependent Role="TblCompany">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <EntityContainer Name="AUTOMOBILECMSEntities1" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="TblBrands" EntityType="Self.TblBrand" />
-          <EntitySet Name="TblCompanies" EntityType="Self.TblCompany" />
-          <EntitySet Name="TblGalleries" EntityType="Self.TblGallery" />
-          <EntitySet Name="TblModels" EntityType="Self.TblModel" />
-          <EntitySet Name="TblSolds" EntityType="Self.TblSold" />
-          <EntitySet Name="TblUsers" EntityType="Self.TblUser" />
-          <AssociationSet Name="FK_TblModels_TblBrand" Association="Self.FK_TblModels_TblBrand">
-            <End Role="TblBrand" EntitySet="TblBrands" />
-            <End Role="TblModels" EntitySet="TblModels" />
-          </AssociationSet>
-          <AssociationSet Name="FK_Company_Users" Association="Self.FK_Company_Users">
-            <End Role="TblUsers" EntitySet="TblUsers" />
-            <End Role="TblCompany" EntitySet="TblCompanies" />
-          </AssociationSet>
-          <EntitySet Name="TblRoles" EntityType="AUTOMOBILECMSModel.TblRole" />
-          <EntitySet Name="UserInRoles" EntityType="AUTOMOBILECMSModel.UserInRole" />
-          <AssociationSet Name="FK_UserInRole_TblRole" Association="AUTOMOBILECMSModel.FK_UserInRole_TblRole">
-            <End Role="TblRole" EntitySet="TblRoles" />
-            <End Role="UserInRole" EntitySet="UserInRoles" />
-          </AssociationSet>
-          <AssociationSet Name="FK_UserInRole_TblUsers" Association="AUTOMOBILECMSModel.FK_UserInRole_TblUsers">
-            <End Role="TblUser" EntitySet="TblUsers" />
-            <End Role="UserInRole" EntitySet="UserInRoles" />
-          </AssociationSet>
-        </EntityContainer>
-        <EntityType Name="TblRole">
-          <Key>
-            <PropertyRef Name="RoleId" />
-          </Key>
-          <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="RoleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="IsActive" Type="Boolean" />
-          <NavigationProperty Name="UserInRoles" Relationship="AUTOMOBILECMSModel.FK_UserInRole_TblRole" FromRole="TblRole" ToRole="UserInRole" />
         </EntityType>
         <EntityType Name="UserInRole">
           <Key>
@@ -357,6 +563,88 @@
           <NavigationProperty Name="TblRole" Relationship="AUTOMOBILECMSModel.FK_UserInRole_TblRole" FromRole="UserInRole" ToRole="TblRole" />
           <NavigationProperty Name="TblUser" Relationship="AUTOMOBILECMSModel.FK_UserInRole_TblUsers" FromRole="UserInRole" ToRole="TblUser" />
         </EntityType>
+        <EntityType Name="TblCountry">
+          <Key>
+            <PropertyRef Name="CountryID" />
+            <PropertyRef Name="CountryCode" />
+            <PropertyRef Name="CountryName" />
+          </Key>
+          <Property Name="CountryID" Type="Int32" Nullable="false" />
+          <Property Name="CountryCode" Type="String" Nullable="false" MaxLength="2" FixedLength="true" Unicode="false" />
+          <Property Name="CountryName" Type="String" Nullable="false" MaxLength="45" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_TblBrand_TblBrand">
+          <End Type="AUTOMOBILECMSModel.TblBrand" Role="TblBrand" Multiplicity="1" />
+          <End Type="AUTOMOBILECMSModel.TblBrand" Role="TblBrand1" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="TblBrand">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="TblBrand1">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProducts_TblBrand">
+          <End Type="AUTOMOBILECMSModel.TblBrand" Role="TblBrand" Multiplicity="0..1" />
+          <End Type="AUTOMOBILECMSModel.TblProduct" Role="TblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblBrand">
+              <PropertyRef Name="BrandID" />
+            </Principal>
+            <Dependent Role="TblProduct">
+              <PropertyRef Name="BrandID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblUsers_TblCities">
+          <End Type="AUTOMOBILECMSModel.TblCity" Role="TblCity" Multiplicity="0..1" />
+          <End Type="AUTOMOBILECMSModel.TblUser" Role="TblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCity">
+              <PropertyRef Name="CityID" />
+            </Principal>
+            <Dependent Role="TblUser">
+              <PropertyRef Name="CityID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblUsers_TblCompany">
+          <End Type="AUTOMOBILECMSModel.TblCompany" Role="TblCompany" Multiplicity="0..1" />
+          <End Type="AUTOMOBILECMSModel.TblUser" Role="TblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblCompany">
+              <PropertyRef Name="CompanyID" />
+            </Principal>
+            <Dependent Role="TblUser">
+              <PropertyRef Name="CompanyID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProductImages_TblProducts">
+          <End Type="AUTOMOBILECMSModel.TblProduct" Role="TblProduct" Multiplicity="1" />
+          <End Type="AUTOMOBILECMSModel.TblProductImage" Role="TblProductImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblProduct">
+              <PropertyRef Name="ProductID" />
+            </Principal>
+            <Dependent Role="TblProductImage">
+              <PropertyRef Name="ProductID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblProducts_TblUsers">
+          <End Type="AUTOMOBILECMSModel.TblUser" Role="TblUser" Multiplicity="0..1" />
+          <End Type="AUTOMOBILECMSModel.TblProduct" Role="TblProduct" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="TblProduct">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="FK_UserInRole_TblRole">
           <End Type="AUTOMOBILECMSModel.TblRole" Role="TblRole" Multiplicity="0..1" />
           <End Type="AUTOMOBILECMSModel.UserInRole" Role="UserInRole" Multiplicity="*" />
@@ -366,6 +654,30 @@
             </Principal>
             <Dependent Role="UserInRole">
               <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblSold_TblUsers">
+          <End Type="AUTOMOBILECMSModel.TblUser" Role="TblUser" Multiplicity="0..1" />
+          <End Type="AUTOMOBILECMSModel.TblSold" Role="TblSold" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TblUser">
+              <PropertyRef Name="UserID" />
+            </Principal>
+            <Dependent Role="TblSold">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_TblUsers_tblTemplate">
+          <End Type="AUTOMOBILECMSModel.tblTemplate" Role="tblTemplate" Multiplicity="0..1" />
+          <End Type="AUTOMOBILECMSModel.TblUser" Role="TblUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tblTemplate">
+              <PropertyRef Name="template_id" />
+            </Principal>
+            <Dependent Role="TblUser">
+              <PropertyRef Name="template_id" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -386,102 +698,76 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="AUTOMOBILECMSModelStoreContainer" CdmEntityContainer="AUTOMOBILECMSEntities1">
+        <EntityContainerMapping StorageEntityContainer="AUTOMOBILECMSModelStoreContainer" CdmEntityContainer="AUTOMOBILECMSEntities2">
+          <FunctionImportMapping FunctionImportName="sp_InsertSoldModels" FunctionName="AUTOMOBILECMSModel.Store.sp_InsertSoldModels" />
           <EntitySetMapping Name="TblBrands">
             <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblBrand">
               <MappingFragment StoreEntitySet="TblBrand">
-                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
-                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblCities">
+            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblCity">
+              <MappingFragment StoreEntitySet="TblCities">
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+                <ScalarProperty Name="CityName" ColumnName="CityName" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="TblCompanies">
             <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblCompany">
               <MappingFragment StoreEntitySet="TblCompany">
-                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
-                <ScalarProperty Name="Address" ColumnName="Address" />
-                <ScalarProperty Name="Logo" ColumnName="Logo" />
                 <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblGalleries">
-            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblGallery">
-              <MappingFragment StoreEntitySet="TblGallery">
-                <ScalarProperty Name="GalleryID" ColumnName="GalleryID" />
-                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblModels">
-            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblModel">
-              <MappingFragment StoreEntitySet="TblModels">
-                <ScalarProperty Name="ModelID" ColumnName="ModelID" />
-                <ScalarProperty Name="ImagePath1" ColumnName="ImagePath1" />
-                <ScalarProperty Name="ImagePath2" ColumnName="ImagePath2" />
-                <ScalarProperty Name="ImagePath3" ColumnName="ImagePath3" />
-                <ScalarProperty Name="ImagePath4" ColumnName="ImagePath4" />
-                <ScalarProperty Name="ModelOverview" ColumnName="ModelOverview" />
-                <ScalarProperty Name="Price" ColumnName="Price" />
-                <ScalarProperty Name="ModelName" ColumnName="ModelName" />
-                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
-                <ScalarProperty Name="DateofPurchase" ColumnName="DateofPurchase" />
-                <ScalarProperty Name="KMDriven" ColumnName="KMDriven" />
-                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblSolds">
-            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblSold">
-              <MappingFragment StoreEntitySet="TblSold">
-                <ScalarProperty Name="SoldID" ColumnName="SoldID" />
-                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
-                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
-                <ScalarProperty Name="Modal" ColumnName="Modal" />
-                <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="Description" ColumnName="Description" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
-                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="TblUsers">
-            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblUser">
-              <MappingFragment StoreEntitySet="TblUsers">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="EmailID" ColumnName="EmailID" />
                 <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
-                <ScalarProperty Name="Password" ColumnName="Password" />
-                <ScalarProperty Name="Status" ColumnName="Status" />
-                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
-                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
-                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblProductImages">
+            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblProductImage">
+              <MappingFragment StoreEntitySet="TblProductImages">
+                <ScalarProperty Name="ImagePath9" ColumnName="ImagePath9" />
+                <ScalarProperty Name="ImagePath8" ColumnName="ImagePath8" />
+                <ScalarProperty Name="ImagePath7" ColumnName="ImagePath7" />
+                <ScalarProperty Name="ImagePath6" ColumnName="ImagePath6" />
+                <ScalarProperty Name="ImagePath5" ColumnName="ImagePath5" />
+                <ScalarProperty Name="ImagePath4" ColumnName="ImagePath4" />
+                <ScalarProperty Name="ImagePath3" ColumnName="ImagePath3" />
+                <ScalarProperty Name="ImagePath2" ColumnName="ImagePath2" />
+                <ScalarProperty Name="ImagePath1" ColumnName="ImagePath1" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ProductImagesID" ColumnName="ProductImagesID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblProducts">
+            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblProduct">
+              <MappingFragment StoreEntitySet="TblProducts">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="IsSold" ColumnName="IsSold" />
                 <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="KMDriven" ColumnName="KMDriven" />
+                <ScalarProperty Name="DateofPurchase" ColumnName="DateofPurchase" />
+                <ScalarProperty Name="BrandID" ColumnName="BrandID" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="ProductOverview" ColumnName="ProductOverview" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -494,6 +780,64 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="TblSolds">
+            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblSold">
+              <MappingFragment StoreEntitySet="TblSold">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="ModalID" ColumnName="ModalID" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="SoldID" ColumnName="SoldID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblStates">
+            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblState">
+              <MappingFragment StoreEntitySet="TblStates">
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="StateID" ColumnName="StateID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTemplates">
+            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.tblTemplate">
+              <MappingFragment StoreEntitySet="tblTemplate">
+                <ScalarProperty Name="isactive" ColumnName="isactive" />
+                <ScalarProperty Name="template_name" ColumnName="template_name" />
+                <ScalarProperty Name="template_id" ColumnName="template_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TblUsers">
+            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblUser">
+              <MappingFragment StoreEntitySet="TblUsers">
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="template_id" ColumnName="template_id" />
+                <ScalarProperty Name="IsLoggedIn" ColumnName="IsLoggedIn" />
+                <ScalarProperty Name="UpdatedOn" ColumnName="UpdatedOn" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="ContactNo" ColumnName="ContactNo" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="UserInRoles">
             <EntityTypeMapping TypeName="AUTOMOBILECMSModel.UserInRole">
               <MappingFragment StoreEntitySet="UserInRole">
@@ -503,7 +847,16 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-        </EntityContainerMapping>
+          <EntitySetMapping Name="TblCountries">
+            <EntityTypeMapping TypeName="AUTOMOBILECMSModel.TblCountry">
+              <MappingFragment StoreEntitySet="TblCountries">
+                <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+                <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+                <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
   </edmx:Runtime>

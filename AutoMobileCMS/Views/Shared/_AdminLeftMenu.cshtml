@@ -1,50 +1,91 @@
-﻿    <!-- Left side column. contains the logo and sidebar -->
-<aside class="main-sidebar">
-    <!-- sidebar: style can be found in sidebar.less -->
-    <section class="sidebar">
-        <!-- Sidebar user panel -->
-        <div class="user-panel">
-            <div class="pull-left image">
-                <img src="~/Content/adminlte/img/user.png" class="img-circle" alt="User Image">
-            </div>
-            <div class="pull-left info">
-                @{
-                    if (HttpContext.Current.Session["UserDetails"] != null)
-                    {
-                        @*var user = HttpContext.Current.Session["UserDetails"] as EPassBook.Models.UserViewModel;
-                        <p>@Html.Label("Welcome " + user.FirstName == null ? "" : user.FirstName)  @Html.Label(user.LastName == null ? "" : user.LastName) @Html.Label(user.RoleName == null ? "" : "(" + user.RoleName + ")")</p>*@
-                    }
-                }
-                @*<p>Alexander Pierce</p>*@
-                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
-            </div>
-        </div>
-        <!-- sidebar menu: : style can be found in sidebar.less -->
-        <ul class="sidebar-menu" data-widget="tree">
-            @*<li class="header">MAIN NAVIGATION</li>*@
-            <li class="">
-                <a href="@Url.Action("Dashboard","Dashboard")">
+﻿@{
+    var userDetails = HttpContext.Current.Session["UserDetails"] as AutoMobileCMS.Models.UserViewModel;
+    if (userDetails != null)
+    {
+        if (userDetails.UserInRoles.FirstOrDefault().RoleId == Convert.ToInt32(AutoMobileCMS.Helpers.Common.Roles.Admin))
+        {
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="~/Content/adminlte/img/user.png" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            @{
+                                 if (HttpContext.Current.Session["UserDetails"] != null)
+                                {
+                            <p>@Html.Label("Welcome " + userDetails.UserName)  </p>
+                                }
+                            }
+                            @*<p>Alexander Pierce</p>*@
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu" data-widget="tree">
+                        @*<li class="header">MAIN NAVIGATION</li>*@
+                        <li class="">
+                            <a href="@Url.Action("Index", "AdminModels")">
 
-                    <i class="fa fa-dashboard"></i> <span>Dashboard</span>
-                </a>
-            <li class="">
-                <a href="@Url.Action("Index", "User")">
-                    <i class="fa fa-user"></i>
-                    <span>User Master</span>
-                </a>
-            </li>
-            <li class="">
-                <a href="@Url.Action("Index", "Beneficiary")">
-                    <i class="glyphicon glyphicon-user"></i> <span>Beneficiary</span>
-                </a>
-            </li>
-            <li class="">
-                <a href="@Url.Action("Index", "City")">
-                    <i class="glyphicon glyphicon-stats"></i> <span>City</span>
-                </a>
-            </li>
-        </ul>
-    </section>
-    <!-- /.sidebar -->
-</aside>
+                                <i class="fa fa-dashboard"></i> <span>Products</span>
+                            </a>
+                        <li class="">
+                            <a href="@Url.Action("Index", "User")">
+                                <i class="fa fa-user"></i>
+                                <span>User Master</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+        }
+        if (userDetails.UserInRoles.FirstOrDefault().RoleId == Convert.ToInt32(AutoMobileCMS.Helpers.Common.Roles.SiteOwner))
+        {
+            <aside class="main-sidebar">
+                <!-- sidebar: style can be found in sidebar.less -->
+                <section class="sidebar">
+                    <!-- Sidebar user panel -->
+                    <div class="user-panel">
+                        <div class="pull-left image">
+                            <img src="~/Content/adminlte/img/user.png" class="img-circle" alt="User Image">
+                        </div>
+                        <div class="pull-left info">
+                            @{
+                             if (HttpContext.Current.Session["UserDetails"] != null)
+                                {
+                            <p>@Html.Label("Welcome " + userDetails.UserName)  </p>
+                                }
+                            }
+
+                            <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+                        </div>
+                    </div>
+                    <!-- sidebar menu: : style can be found in sidebar.less -->
+                    <ul class="sidebar-menu" data-widget="tree">
+                        @*<li class="header">MAIN NAVIGATION</li>*@
+                        <li class="">
+                            <a href="@Url.Action("Index", "Product")">
+
+                                <i class="fa fa-dashboard"></i> <span>Products</span>
+                            </a>
+                        <li class="">
+                            <a href="@Url.Action("Index", "User")">
+                                <i class="fa fa-user"></i>
+                                <span>Enquiry</span>
+                            </a>
+                        </li>
+
+
+                    </ul>
+                </section>
+                <!-- /.sidebar -->
+            </aside>
+        }
+    }
+}
 

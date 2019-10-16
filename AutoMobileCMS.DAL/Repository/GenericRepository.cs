@@ -11,10 +11,10 @@ namespace AutoMobileCMS.DAL.Repository
 {
     public class GenericRepository<TEntity> : IGenericRepository<TEntity> where TEntity : class
     {
-        private readonly AUTOMOBILECMSEntities1 dbContext = null;
+        private readonly AUTOMOBILECMSEntities2 dbContext = null;
         private DbSet<TEntity> entityTable = null;
 
-        public GenericRepository(AUTOMOBILECMSEntities1 _dbContext)
+        public GenericRepository(AUTOMOBILECMSEntities2 _dbContext)
         {
             dbContext = _dbContext;
             this.entityTable = dbContext.Set<TEntity>();

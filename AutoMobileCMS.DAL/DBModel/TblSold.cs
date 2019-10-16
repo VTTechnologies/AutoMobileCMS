@@ -17,7 +17,7 @@ namespace AutoMobileCMS.DAL.DBModel
         public int SoldID { get; set; }
         public string ImagePath { get; set; }
         public string CustomerName { get; set; }
-        public string Modal { get; set; }
+        public Nullable<int> ModalID { get; set; }
         public Nullable<System.DateTime> Date { get; set; }
         public string Description { get; set; }
         public Nullable<bool> Status { get; set; }
@@ -25,5 +25,8 @@ namespace AutoMobileCMS.DAL.DBModel
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public Nullable<int> UserID { get; set; }
+    
+        public virtual TblUser TblUser { get; set; }
     }
 }

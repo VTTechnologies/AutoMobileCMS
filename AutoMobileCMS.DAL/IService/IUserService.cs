@@ -18,6 +18,7 @@ namespace AutoMobileCMS.DAL.IService
         void Add(TblUser User);
         void Update(TblUser User);
         void Delete(int id);
-        void SaveChanges();    
+        void SaveChanges();
+        TblUser GetPassword(string userName);
     }
 }

@@ -1,0 +1,217 @@
+﻿@model AutoMobileCMS.Models.ProductImagesViewModel
+
+@{
+    ViewBag.Title = "ImagesUploads";
+    // Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.imgmain = Model.ImagePath1;
+    ViewBag.img2 = Model.ImagePath2;
+    ViewBag.img3 = Model.ImagePath3;
+    ViewBag.img4 = Model.ImagePath4;
+    ViewBag.img5 = Model.ImagePath5;
+    ViewBag.img6 = Model.ImagePath6;
+    ViewBag.img7 = Model.ImagePath7;
+    ViewBag.img8 = Model.ImagePath8;
+    ViewBag.img9 = Model.ImagePath9;
+}
+
+<div class="content-wrapper">
+    <section>
+        Upload Images
+    </section>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                </div>
+                @using (Html.BeginForm("ImagesEdit", "Product", Model.ProductID, FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <div class="box-body">
+                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="form-group">
+                                <div class="row">
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            @*Html.LabelFor(model => model.ImagePath2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <img id="img1" src="~/Uploads/ModelsImages/@Model.ImagePath1" alt="your image" class="img-thumbnail col-md-12" style="height:250px" />
+                                            <input type="file" value="~/Uploads/ModelsImages/@Model.ImagePath1" id="imgupload1"  name="imgupload1" onchange="readURL(this,'img1');" class="btn btn-primary col-md-7" />
+                                            <input type="button" id="btnimg1cencal" onclick="removeimg('img1','imgupload1')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            @*Html.LabelFor(model => model.ImagePath2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <img id="img2" src="/Uploads/ModelsImages/@Model.ImagePath2" alt="your image" class="img-thumbnail col-md-12" style="height:250px" />
+                                            <input type="file" value="Upload" id="imgupload2" name="imgupload2" onchange="readURL(this,'img2');" class="btn btn-primary col-md-7" />
+                                            <input type="button" id="btnimg2cencal" onclick="removeimg('img2','imgupload2')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            @*Html.LabelFor(model => model.ImagePath2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <img id="img3" src="/Uploads/ModelsImages/@Model.ImagePath3" alt="your image" class="img-thumbnail col-md-12" style="height:250px" />
+                                            <input type="file" value="Upload" id="imgupload3" name="imgupload3" onchange="readURL(this,'img3');" class="btn btn-primary col-md-7" />
+                                            <input type="button" id="btnimg3cencal" onclick="removeimg('img3','imgupload3')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div><br /><br />
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            @*Html.LabelFor(model => model.ImagePath2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <img id="img4" src="~/Uploads/ModelsImages/@Model.ImagePath4" alt="your image" class="img-thumbnail col-md-12" style="height:250px" />
+                                            <input type="file" value="Upload" id="imgupload4" name="imgupload4" onchange="readURL(this,'img4');" class="btn btn-primary col-md-7" />
+                                            <input type="button" id="btnimg4cencal" onclick="removeimg('img4','imgupload4')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            @*Html.LabelFor(model => model.ImagePath2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <img id="img5" src="~/Uploads/ModelsImages/@Model.ImagePath5" alt="your image" class="img-thumbnail col-md-12" style="height:250px" />
+                                            <input type="file" value="Upload" id="imgupload5" name="imgupload5" onchange="readURL(this,'img5');" class="btn btn-primary col-md-7" />
+                                            <input type="button" id="btnimg5cencal" onclick="removeimg('img5','imgupload5')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            @*Html.LabelFor(model => model.ImagePath2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <img id="img6" src="~/Uploads/ModelsImages/@Model.ImagePath6" alt="your image" class="img-thumbnail col-md-12" style="height:250px" />
+                                            <input type="file" value="Upload" id="imgupload6" name="imgupload6" onchange="readURL(this,'img6');" class="btn btn-primary col-md-7" />
+                                            <input type="button" id="btnimg6cencal" onclick="removeimg('img6','imgupload6')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div><br /><br /><br />
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            @*Html.LabelFor(model => model.ImagePath2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <img id="img7" src="~/Uploads/ModelsImages/@Model.ImagePath7" alt="your image" class="img-thumbnail col-md-12" style="height:250px" />
+                                            <input type="file" value="Upload" id="imgupload7" name="imgupload7" onchange="readURL(this,'img7');" class="btn btn-primary col-md-7" />
+                                            <input type="button" id="btnimg7cencal" onclick="removeimg('img7','imgupload7')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            @*Html.LabelFor(model => model.ImagePath2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <img id="img8" src="~/Uploads/ModelsImages/@Model.ImagePath8" alt="your image" class="img-thumbnail col-md-12" style="height:250px" />
+                                            <input type="file" value="Upload" id="imgupload8" name="imgupload8" onchange="readURL(this,'img8');" class="btn btn-primary col-md-7" />
+                                            <input type="button" id="btnimg8cencal" onclick="removeimg('img8','imgupload8')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+                                        <div class="col-xs-12 col-sm-2 col-md-2 col-lg-2">
+                                            @*Html.LabelFor(model => model.ImagePath2, htmlAttributes: new { @class = "control-label col-md-2" })*@
+                                        </div>
+                                        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                            <img id="img9" src="~/Uploads/ModelsImages/@Model.ImagePath9" alt="your image" class="img-thumbnail col-md-12" style="height:250px" />
+                                            <input type="file" value="Upload" id="imgupload9" name="imgupload9" onchange="readURL(this,'img9');" class="btn btn-primary col-md-7" />
+                                            <input type="button" id="btnimg9cencal" onclick="removeimg('img9','imgupload9')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Submit" class="btn btn-primary pull-right" onclick="return validation();" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+
+@if (TempData["Message"] != null)
+{
+    <script type="text/javascript">
+    debugger;
+    window.onload = function () {
+        alert('@TempData["Message"]');
+        window.location.href = "/Product/Index/";
+    };
+    </script>
+}
+
+
+    @*@if (ViewBag.Message != null)
+        {
+            <script type="text/javascript">
+                window.onload = function () {
+                    debugger
+                    alert("submited successfully");
+                    window.location.href = "/Models/Index/";
+                };
+            </script>
+        }*@
+    <script>
+
+
+    function removeimg(img, fileupld) {
+        debugger;
+        document.getElementById(img).removeAttribute('src');
+        document.getElementById(fileupld).value = "";
+
+    }
+    function readURL(input, id) {
+       
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            var vall = '#' + id;
+           // alert(vall);
+            if (id == 'img1' || id == 'img2' || id == 'img3' || id == 'img4' || id == 'img5' || id == 'img6' || id == 'img7' || id == 'img8' || id == 'img9') {
+                reader.onload = function (e) {
+                    $(vall)
+                        .attr('src', e.target.result);
+                };
+            }
+            reader.readAsDataURL(input.files[0]);
+        }
+        
+
+
+    }
+    function validation() {
+        //if ($('#imgupload1').val() == '' || $('#imgupload2').val() == '' || $('#imgupload3').val() == '' || $('#imgupload4').val() == '' || $('#imgupload5').val() == '' || $('#imgupload6').val() == '' || $('#imgupload7').val() == '' || $('#imgupload8').val() == '' || $('#imgupload9').val() == '')
+        if ($('#img1').attr('src') == '')
+        {
+            alert("Please select All 9 Photos of Model");
+            return false;
+        }
+    return true;
+    }
+    </script>

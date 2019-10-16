@@ -13,13 +13,13 @@ namespace AutoMobileCMS.DAL.Service
 {
     public class RoleService : IRoleService
     {
-        private readonly AUTOMOBILECMSEntities1 _dbContext;
+        private readonly AUTOMOBILECMSEntities2 _dbContext;
         private UnitOfWork unitOfWork;
         private GenericRepository<TblRole> RoleRepository;
 
         public RoleService()
         {
-            _dbContext = new AUTOMOBILECMSEntities1();
+            _dbContext = new AUTOMOBILECMSEntities2();
             unitOfWork = new UnitOfWork(_dbContext);
             RoleRepository = unitOfWork.GenericRepository<TblRole>();
         }

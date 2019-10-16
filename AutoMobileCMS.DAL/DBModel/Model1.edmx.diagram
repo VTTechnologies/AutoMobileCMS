@@ -4,18 +4,28 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="b51c3177ecd2462cbb0d94d53b8d7e5a" Name="Diagram1">
-        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblBrand" Width="1.5" PointX="9.875" PointY="1.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblCompany" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
-        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblGallery" Width="1.5" PointX="0.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblModel" Width="1.5" PointX="6.375" PointY="1.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblSold" Width="1.5" PointX="2.75" PointY="5.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblUser" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
-        <AssociationConnector Association="AUTOMOBILECMSModel.FK_TblModels_TblBrand" ManuallyRouted="false" />
-        <AssociationConnector Association="AUTOMOBILECMSModel.FK_Company_Users" ManuallyRouted="false" />
-        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblRole" Width="1.5" PointX="0.75" PointY="12.75" />
-        <EntityTypeShape EntityType="AUTOMOBILECMSModel.UserInRole" Width="1.5" PointX="3" PointY="0.75" />
+      <Diagram DiagramId="6e485c66216b4231889ca2e34bb4fef4" Name="Diagram1">
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblBrand" Width="1.5" PointX="3" PointY="0.75" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblCity" Width="1.5" PointX="0.75" PointY="6.375" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblCompany" Width="1.5" PointX="0.75" PointY="9.25" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblProductImage" Width="2.125" PointX="7.5" PointY="9.5" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblProduct" Width="1.5" PointX="5.25" PointY="5.125" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblRole" Width="1.5" PointX="6" PointY="2.375" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblSold" Width="1.5" PointX="5.25" PointY="13.25" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblState" Width="1.5" PointX="8.75" PointY="1" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.tblTemplate" Width="1.5" PointX="0.75" PointY="3.75" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblUser" Width="1.5" PointX="3" PointY="4.625" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.UserInRole" Width="1.5" PointX="8.25" PointY="6.25" />
+        <EntityTypeShape EntityType="AUTOMOBILECMSModel.TblCountry" Width="1.5" PointX="9.75" PointY="10" />
+        <AssociationConnector Association="AUTOMOBILECMSModel.FK_TblBrand_TblBrand" />
+        <AssociationConnector Association="AUTOMOBILECMSModel.FK_TblProducts_TblBrand" />
+        <AssociationConnector Association="AUTOMOBILECMSModel.FK_TblUsers_TblCities" />
+        <AssociationConnector Association="AUTOMOBILECMSModel.FK_TblUsers_TblCompany" />
+        <AssociationConnector Association="AUTOMOBILECMSModel.FK_TblProductImages_TblProducts" />
+        <AssociationConnector Association="AUTOMOBILECMSModel.FK_TblProducts_TblUsers" />
         <AssociationConnector Association="AUTOMOBILECMSModel.FK_UserInRole_TblRole" />
+        <AssociationConnector Association="AUTOMOBILECMSModel.FK_TblSold_TblUsers" />
+        <AssociationConnector Association="AUTOMOBILECMSModel.FK_TblUsers_tblTemplate" />
         <AssociationConnector Association="AUTOMOBILECMSModel.FK_UserInRole_TblUsers" />
       </Diagram>
     </edmx:Diagrams>

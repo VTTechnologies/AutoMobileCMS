@@ -1,0 +1,141 @@
+﻿@model AutoMobileCMS.Models.UserViewModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Create Models
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+
+                    @using (Html.BeginForm("Create", "User", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="box-body">
+
+
+                            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                        @Html.LabelFor(model => model.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    </div>
+                                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                        @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.UserName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    </div>
+                                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                        @Html.LabelFor(model => model.ContactNo, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    </div>
+                                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                        @Html.EditorFor(model => model.ContactNo, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.ContactNo, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                        @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                    </div>
+                                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                        @Html.LabelFor(model => model.RoleId, "Role", htmlAttributes: new { @class = "" })
+                                        <span style="color:red">*</span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                        @Html.DropDownListFor(model => model.RoleId, Model.TblRole, "SELECT ROLE", new { @class = "form-control",@Id="ddlroles", @onchange = "jsfuncation()" })
+                                        @Html.ValidationMessageFor(model => model.RoleId, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                        @Html.LabelFor(model => model.RoleId, "Template", htmlAttributes: new { @class = "", disabled = "disabled" })
+                                        <span style="color:red">*</span>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                        @Html.DropDownListFor(model => model.template_id, Model.templates, "SELECT TEMPLATE", new { @class = "form-control", @Id = "ddltemplates", disabled = "disabled" })
+                                        @Html.ValidationMessageFor(model => model.template_id, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-primary" onclick="return validationss();" />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+
+
+@if (TempData["Message"] != null)
+{
+    <script type="text/javascript">
+        debugger;
+        window.onload = function () {
+            alert('@TempData["Message"]');
+            window.location.href = "/User/Index/";
+        };
+    </script>
+}
+<script>
+     function jsfuncation() {
+         var e = document.getElementById("ddlroles");
+         var strrole = e.options[e.selectedIndex].text;
+         if (strrole == "SiteOwner") {
+             document.getElementById("ddltemplates").disabled = false;
+         }
+         else {
+             document.getElementById("ddltemplates").disabled = true;
+         }
+     }
+
+     function validationss() {
+         var t = document.getElementById("ddltemplates");
+         var strdob = t.options[t.selectedIndex].text;
+         var e = document.getElementById("ddlroles");
+         var strrole = e.options[e.selectedIndex].text;
+         if (strrole == "SiteOwner") {
+             if (strdob == "SELECT TEMPLATE") {
+                 alert("Please template for site owner")
+                 return false;
+             }
+         }
+         return true;
+     }
+</script>

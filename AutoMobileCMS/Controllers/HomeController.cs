@@ -1,4 +1,7 @@
-﻿using System;
+﻿using AutoMobileCMS.DAL.DBModel;
+using AutoMobileCMS.DAL.IService;
+using AutoMobileCMS.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -13,21 +16,6 @@ namespace AutoMobileCMS.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-            return View();
-        }
-
-        public ActionResult Shop()
-        {
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-            return View();
-        }
+        
     }
 }

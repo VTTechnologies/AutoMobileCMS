@@ -1,0 +1,144 @@
+﻿@model IEnumerable<AutoMobileCMS.Models.ProductViewModel>
+
+@{
+    ViewBag.Title = "ProductList";
+    //  Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    <!-- Content Header (Page header) -->
+    string tempname = @ViewBag.templatename;
+   
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Products
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i>Products</a></li>
+        </ol>
+    </section>
+    <section class="content" id="Index">
+        <div class="row">
+            <div class="col-xs-12">
+                @Html.ActionLink("Create New", "Create", "Product", null, new { @class = "btn btn-primary" })
+                @Html.ActionLink("Web Site", "Index", tempname, null, new { @class = "btn btn-primary" })
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box">
+                    <div class="box-header with-border">
+                    </div>
+                    <div class="box-body">
+                        <table class="table">
+                            <tr>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ProductID)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.ProductName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.BrandName)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.Price)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.DateofPurchase)
+                                </th>
+                                <th>
+                                    @Html.DisplayNameFor(model => model.KMDriven)
+                                </th>
+
+                                <th></th>
+                            </tr>
+
+                            @if (Model != null)
+                            {
+                                foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProductID)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.ProductName)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.BrandName)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Price)
+                                        </td>
+
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.DateofPurchase)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.KMDriven)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Edit", "Edit", new { id = item.ProductID }, htmlAttributes: new { @class = "btn btn-default" })
+                                            @Html.ActionLink("Delete", "Delete", new { id = item.ProductID }, new { onclick = "return Confirm('" + @item.ProductID + "');", @class = "btn alert-danger" })
+                                        </td>
+                                    </tr>
+                                }
+                            }
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<script type="text/javascript">
+        function ReloadPage() {
+            window.location = '@Url.Action("Index")';
+        }
+
+    function Confirm(id) {
+            debugger;
+            $("#AlertMessage").text("Are you sure you wish to delete this Model?");
+        $("#IdForDelete").val(id);
+        $("#btnOk").hide();
+        $("#AlertModal").modal('show');
+            return false
+        }
+
+        $("#btnYes").click(function () {
+            var label = $("#IdForDelete");
+            var id = label.val();
+            $("#AlertModal").modal('hide');
+            var url = '@Url.Action("Delete", "Beneficiary")';
+            var data = { id: id };
+            $.ajax(
+                {
+                    type: "GET",
+                    url: url,
+                    data: data,
+                    contentType: "application/json; charset=utf-8",
+                    success: function (response) {
+                        $("#AlertMessage").text("User deleted successfully");
+                        $("#btnNo").hide();
+                        $("#btnYes").hide();
+                        $("#btnOk").show();
+                        $("#AlertModal").modal('show');
+                    },
+                    failure: function (response) {
+                        alert(response.responseText);
+                    },
+                    error: function (response) {
+                        alert(response.responseText);
+                    }
+                });
+        });
+
+        $("#btnNo").click(function () {
+            $("#AlertModal").modal('hide');
+    });
+
+  
+</script>

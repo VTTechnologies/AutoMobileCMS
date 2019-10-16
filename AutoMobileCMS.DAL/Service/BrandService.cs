@@ -13,13 +13,13 @@ namespace AutoMobileCMS.DAL.Service
 {
     public class BrandService: IBrandService
     {
-        private readonly AUTOMOBILECMSEntities1 _dbContext;
+        private readonly AUTOMOBILECMSEntities2 _dbContext;
         private UnitOfWork unitOfWork;
         private GenericRepository<TblBrand> BrandRepository;
 
         public BrandService()
         {
-            _dbContext = new AUTOMOBILECMSEntities1();
+            _dbContext = new AUTOMOBILECMSEntities2();
             unitOfWork = new UnitOfWork(_dbContext);
             BrandRepository = unitOfWork.GenericRepository<TblBrand>();
         }

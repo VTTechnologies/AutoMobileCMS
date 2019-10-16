@@ -16,8 +16,13 @@ namespace AutoMobileCMS
             // it is NOT necessary to register your controllers
 
             container.RegisterType<IBrandService, BrandService>();
-            container.RegisterType<IModelsService, ModelsService>();
-            
+            container.RegisterType<IProductService, ProductService>();
+            container.RegisterType<IUserService, UserService>();
+            container.RegisterType<IRoleService, RoleService>();
+            container.RegisterType<IUserInRoleService, UserInRoleService>();
+            container.RegisterType<ITemplateService, TemplateService>();
+            container.RegisterType<IProductImagesService, ProductImagesService>();
+
             DependencyResolver.SetResolver(new UnityDependencyResolver(container));
         }
     }

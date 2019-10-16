@@ -16,11 +16,14 @@ namespace AutoMobileCMS.DAL.DBModel
     {
         public TblUser()
         {
-            this.TblCompanies = new HashSet<TblCompany>();
+            this.TblProducts = new HashSet<TblProduct>();
+            this.TblSolds = new HashSet<TblSold>();
             this.UserInRoles = new HashSet<UserInRole>();
         }
     
         public int UserID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string UserName { get; set; }
         public string Email { get; set; }
         public Nullable<decimal> ContactNo { get; set; }
@@ -30,8 +33,16 @@ namespace AutoMobileCMS.DAL.DBModel
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
+        public Nullable<bool> IsLoggedIn { get; set; }
+        public Nullable<int> template_id { get; set; }
+        public Nullable<int> CompanyID { get; set; }
+        public Nullable<int> CityID { get; set; }
     
-        public virtual ICollection<TblCompany> TblCompanies { get; set; }
+        public virtual TblCity TblCity { get; set; }
+        public virtual TblCompany TblCompany { get; set; }
+        public virtual ICollection<TblProduct> TblProducts { get; set; }
+        public virtual ICollection<TblSold> TblSolds { get; set; }
+        public virtual tblTemplate tblTemplate { get; set; }
         public virtual ICollection<UserInRole> UserInRoles { get; set; }
     }
 }

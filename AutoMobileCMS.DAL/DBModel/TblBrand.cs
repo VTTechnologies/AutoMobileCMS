@@ -16,7 +16,7 @@ namespace AutoMobileCMS.DAL.DBModel
     {
         public TblBrand()
         {
-            this.TblModels = new HashSet<TblModel>();
+            this.TblProducts = new HashSet<TblProduct>();
         }
     
         public int BrandID { get; set; }
@@ -27,6 +27,8 @@ namespace AutoMobileCMS.DAL.DBModel
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
     
-        public virtual ICollection<TblModel> TblModels { get; set; }
+        public virtual TblBrand TblBrand1 { get; set; }
+        public virtual TblBrand TblBrand2 { get; set; }
+        public virtual ICollection<TblProduct> TblProducts { get; set; }
     }
 }

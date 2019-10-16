@@ -13,13 +13,13 @@ namespace AutoMobileCMS.DAL.Service
 {
     public class UserService: IUserService
     {
-        private readonly AUTOMOBILECMSEntities1 _dbContext;
+        private readonly AUTOMOBILECMSEntities2 _dbContext;
         private UnitOfWork unitOfWork;
         private GenericRepository<TblUser> UserRepository;
 
         public UserService()
         {
-            _dbContext = new AUTOMOBILECMSEntities1();
+            _dbContext = new AUTOMOBILECMSEntities2();
             unitOfWork = new UnitOfWork(_dbContext);
             UserRepository = unitOfWork.GenericRepository<TblUser>();
         }
@@ -61,6 +61,10 @@ namespace AutoMobileCMS.DAL.Service
         {
             UserRepository.Update(user);
         }
+        public TblUser GetPassword(string userName)
+        {
+            return UserRepository.Get(w => w.UserName == userName && w.Status == true, null, string.Empty).FirstOrDefault();
+        }   
     }
 
 }

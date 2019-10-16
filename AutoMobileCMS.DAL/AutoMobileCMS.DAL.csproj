@@ -68,13 +68,19 @@
     <Compile Include="DBModel\TblBrand.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBModel\TblCity.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBModel\TblCompany.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\TblGallery.cs">
+    <Compile Include="DBModel\TblCountry.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="DBModel\TblModel.cs">
+    <Compile Include="DBModel\TblProduct.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\TblProductImage.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBModel\TblRole.cs">
@@ -83,30 +89,44 @@
     <Compile Include="DBModel\TblSold.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="DBModel\TblState.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DBModel\tblTemplate.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="DBModel\TblUser.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="DBModel\UserInRole.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="IService\IProductImagesService.cs" />
+    <Compile Include="IService\ITemplateService.cs" />
     <Compile Include="IService\IUserInRoleService.cs" />
     <Compile Include="IService\IRoleService.cs" />
     <Compile Include="IService\IUserService.cs" />
     <Compile Include="IService\IBrandService.cs" />
-    <Compile Include="IService\IModelsService.cs" />
+    <Compile Include="IService\IProductService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\GenericRepository.cs" />
     <Compile Include="Repository\IGenericReporsitory.cs" />
+    <Compile Include="Service\ProductImagesService.cs" />
+    <Compile Include="Service\TemplateService.cs" />
     <Compile Include="Service\UserInRoleService.cs" />
     <Compile Include="Service\RoleService.cs" />
     <Compile Include="Service\UserService .cs" />
     <Compile Include="Service\BrandService.cs" />
-    <Compile Include="Service\ModelsService.cs" />
+    <Compile Include="Service\ProductService.cs" />
     <Compile Include="UnitofWork\IUnitOfWork.cs" />
     <Compile Include="UnitofWork\UnitOfWork.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="bin\Debug\AutoMobileCMS.DAL.dll.config" />
+    <None Include="bin\Release\AutoMobileCMS.DAL.dll.config" />
     <EntityDeploy Include="DBModel\Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
@@ -119,8 +139,19 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Content Include="bin\Debug\AutoMobileCMS.DAL.dll" />
+    <Content Include="bin\Debug\AutoMobileCMS.DAL.pdb" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Release\AutoMobileCMS.DAL.dll" />
+    <Content Include="bin\Release\AutoMobileCMS.DAL.pdb" />
+    <Content Include="bin\Release\EntityFramework.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Release\EntityFramework.xml" />
     <Content Include="DBModel\Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model1.edmx</DependentUpon>
@@ -132,6 +163,7 @@
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

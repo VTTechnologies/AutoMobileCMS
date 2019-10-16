@@ -10,32 +10,50 @@ namespace AutoMobileCMS.Mapper
 {
     public static class UserMapper
     {
-        public static TblUser Attach(RegisterViewModel registerviewmodel)
+        public static TblUser Attach(UserViewModel userviewmodel)
         {
             TblUser user = new TblUser();
-            user.UserID = registerviewmodel.UserId;
-            user.UserName = registerviewmodel.UserName;
-            user.ContactNo = registerviewmodel.contactNo;
-            user.Password = registerviewmodel.Password;
-            user.Status = registerviewmodel.Status;
-            user.CreatedBy = registerviewmodel.CreatedBy;
-            user.CreatedOn = registerviewmodel.CreatedOn;
-            user.UpdatedBy = registerviewmodel.UpdatedBy;
-            user.UpdatedOn = registerviewmodel.UpdatedOn;
+            user.UserID = userviewmodel.UserID;
+            user.UserName = userviewmodel.UserName;
+            user.Email = userviewmodel.Email;
+            user.ContactNo = userviewmodel.ContactNo;
+            user.Password = userviewmodel.Password;
+            user.Status = userviewmodel.Status;
+            user.CreatedBy = userviewmodel.CreatedBy;
+            user.CreatedOn = userviewmodel.CreatedOn;
+            user.UpdatedBy = userviewmodel.UpdatedBy;
+            user.UpdatedOn = userviewmodel.UpdatedOn;
+            user.template_id = userviewmodel.template_id;
+
+            user.UserInRoles = userviewmodel.UserInRoles == null ? null : userviewmodel.UserInRoles.Select(s => new UserInRole { UserRoleId = s.UserRoleId, RoleId = s.RoleId, UserId = s.UserId }).ToList();
             return user;
         }
 
-        public static RegisterViewModel Detach(TblUser user)
+        public static UserViewModel Detach(TblUser userMaster)
         {
-            RegisterViewModel registerviewmodel = new RegisterViewModel();
-            registerviewmodel.UserId = user.UserID;
-            registerviewmodel.UserName = user.UserName;
-            registerviewmodel.Status = user.Status;
-            registerviewmodel.CreatedBy = user.CreatedBy;
-            registerviewmodel.CreatedOn = user.CreatedOn;
-            registerviewmodel.UpdatedBy = user.UpdatedBy;
-            registerviewmodel.UpdatedOn = user.UpdatedOn;
-            return registerviewmodel;
+            UserViewModel userViewModel = new UserViewModel();
+            userViewModel.UserID = userMaster.UserID;
+            userViewModel.UserName = userMaster.UserName;
+            userViewModel.Status = userMaster.Status;
+            userViewModel.CreatedBy = userMaster.CreatedBy;
+            userViewModel.CreatedOn = userMaster.CreatedOn;
+            userViewModel.UpdatedBy = userMaster.UpdatedBy;
+            userViewModel.UpdatedOn = userMaster.UpdatedOn;
+            userViewModel.ContactNo = userMaster.ContactNo;
+            userViewModel.Password = userMaster.Password;
+            userViewModel.Email = userMaster.Email;
+            userViewModel.template_id = userMaster.template_id;
+            userViewModel.tblTemplate = userMaster.tblTemplate == null ? null : new TemplateViewModel()
+            {
+                template_id = userMaster.tblTemplate.template_id,
+                template_name = userMaster.tblTemplate.template_name,
+                isactive = userMaster.tblTemplate.isactive,
+
+            };
+                
+            userViewModel.RoleName = userMaster.UserInRoles.FirstOrDefault().TblRole.RoleName;
+            userViewModel.UserInRoles = userMaster.UserInRoles.Select(s => new UserInRoleViewModel { UserRoleId = s.UserRoleId, RoleId = s.RoleId.Value, UserId = s.UserId }).ToList();
+            return userViewModel;
         }
     }
 }

@@ -1,3 +1,17 @@
 ﻿@{
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    var userDetails = HttpContext.Current.Session["UserDetails"] as AutoMobileCMS.Models.UserViewModel;
+
+    string layout = layout = "~/Views/Shared/_Layout.cshtml";
+    if (userDetails != null)
+    {
+        if (userDetails.UserInRoles.FirstOrDefault().RoleId == Convert.ToInt32(AutoMobileCMS.Helpers.Common.Roles.Admin))
+        {
+            layout = "~/Views/Shared/_AdminLayout.cshtml";
+        }
+        if (userDetails.UserInRoles.FirstOrDefault().RoleId == Convert.ToInt32(AutoMobileCMS.Helpers.Common.Roles.SiteOwner))
+        {
+            layout = "~/Views/Shared/_SiteOwnerLayout.cshtml";
+        }
+    }
+    Layout = layout;
 }

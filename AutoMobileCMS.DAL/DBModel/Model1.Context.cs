@@ -12,11 +12,13 @@ namespace AutoMobileCMS.DAL.DBModel
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
-    public partial class AUTOMOBILECMSEntities1 : DbContext
+    public partial class AUTOMOBILECMSEntities2 : DbContext
     {
-        public AUTOMOBILECMSEntities1()
-            : base("name=AUTOMOBILECMSEntities1")
+        public AUTOMOBILECMSEntities2()
+            : base("name=AUTOMOBILECMSEntities2")
         {
         }
     
@@ -26,12 +28,45 @@ namespace AutoMobileCMS.DAL.DBModel
         }
     
         public virtual DbSet<TblBrand> TblBrands { get; set; }
+        public virtual DbSet<TblCity> TblCities { get; set; }
         public virtual DbSet<TblCompany> TblCompanies { get; set; }
-        public virtual DbSet<TblGallery> TblGalleries { get; set; }
-        public virtual DbSet<TblModel> TblModels { get; set; }
-        public virtual DbSet<TblSold> TblSolds { get; set; }
-        public virtual DbSet<TblUser> TblUsers { get; set; }
+        public virtual DbSet<TblProductImage> TblProductImages { get; set; }
+        public virtual DbSet<TblProduct> TblProducts { get; set; }
         public virtual DbSet<TblRole> TblRoles { get; set; }
+        public virtual DbSet<TblSold> TblSolds { get; set; }
+        public virtual DbSet<TblState> TblStates { get; set; }
+        public virtual DbSet<tblTemplate> tblTemplates { get; set; }
+        public virtual DbSet<TblUser> TblUsers { get; set; }
         public virtual DbSet<UserInRole> UserInRoles { get; set; }
+        public virtual DbSet<TblCountry> TblCountries { get; set; }
+    
+        public virtual int sp_InsertSoldModels(Nullable<int> modelid, string customername, string description, string imgpath, string createby, Nullable<int> userid)
+        {
+            var modelidParameter = modelid.HasValue ?
+                new ObjectParameter("modelid", modelid) :
+                new ObjectParameter("modelid", typeof(int));
+    
+            var customernameParameter = customername != null ?
+                new ObjectParameter("customername", customername) :
+                new ObjectParameter("customername", typeof(string));
+    
+            var descriptionParameter = description != null ?
+                new ObjectParameter("description", description) :
+                new ObjectParameter("description", typeof(string));
+    
+            var imgpathParameter = imgpath != null ?
+                new ObjectParameter("imgpath", imgpath) :
+                new ObjectParameter("imgpath", typeof(string));
+    
+            var createbyParameter = createby != null ?
+                new ObjectParameter("createby", createby) :
+                new ObjectParameter("createby", typeof(string));
+    
+            var useridParameter = userid.HasValue ?
+                new ObjectParameter("userid", userid) :
+                new ObjectParameter("userid", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("sp_InsertSoldModels", modelidParameter, customernameParameter, descriptionParameter, imgpathParameter, createbyParameter, useridParameter);
+        }
     }
 }

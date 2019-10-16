@@ -11,10 +11,10 @@ namespace AutoMobileCMS.DAL.UnitofWork
 {
     internal class UnitOfWork:IUnitOfWork
     {
-        private readonly AUTOMOBILECMSEntities1 _dbContext;
+        private readonly AUTOMOBILECMSEntities2 _dbContext;
         private Dictionary<string, object> repositories;
 
-        public UnitOfWork(AUTOMOBILECMSEntities1 context)
+        public UnitOfWork(AUTOMOBILECMSEntities2 context)
         {
             _dbContext = context;
         }

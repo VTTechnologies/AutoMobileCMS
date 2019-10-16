@@ -1,0 +1,213 @@
+﻿@model AutoMobileCMS.Models.ProductImagesViewModel
+
+
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutTemplate1.cshtml";
+    ViewBag.imgmain = Model.ImagePath1;
+    ViewBag.img2 = Model.ImagePath2;
+    ViewBag.img3 = Model.ImagePath3;
+    ViewBag.img4 = Model.ImagePath4;
+    ViewBag.img5 = Model.ImagePath5;
+    ViewBag.img6 = Model.ImagePath6;
+    ViewBag.img7 = Model.ImagePath7;
+    ViewBag.img8 = Model.ImagePath8;
+    ViewBag.img9 = Model.ImagePath9;
+}
+
+<div class="breadcrumb-area pt-255 pb-170" style="background-image: url(/Content/img/banner/carbaner1.jpg)">
+    <div class="container-fluid">
+        <div class="breadcrumb-content text-center">
+            <h2>product details </h2>
+            <ul>
+                <li>
+                    <a href="#">home</a>
+                </li>
+                <li>product details </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="product-details-area fluid-padding-3 ptb-130">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="product-details-img-content">
+                    <div class="product-details-tab mr-40">
+                        <div class="product-details-large tab-content">
+                            <div class="tab-pane active" id="pro-details1">
+                                <div class="easyzoom easyzoom--overlay">
+                                    <a id="mainzoom">
+                                        <img id="mainimg" src="~/Uploads/ModelsImages/@ViewBag.imgmain" alt="">
+                                   </a>
+                                </div>
+                            </div>
+                            @*<div class="tab-pane" id="pro-details2">
+                                <div class="easyzoom easyzoom--overlay">
+                                    <a href="~/Uploads/ModelsImages/a5a52.jpg">
+                                        <img src="~/Uploads/ModelsImages/a5a52.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="pro-details3">
+                                <div class="easyzoom easyzoom--overlay">
+                                    <a href="~/Uploads/ModelsImages/a5a52.jpg">
+                                        <img src="~/Uploads/ModelsImages/a5a52.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="pro-details4">
+                                <div class="easyzoom easyzoom--overlay">
+                                    <a href="~/Uploads/ModelsImages/a5a52.jpg">
+                                        <img src="~/Uploads/ModelsImages/a5a52.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="tab-pane" id="pro-details5">
+                                <div class="easyzoom easyzoom--overlay">
+                                    <a href="~/Uploads/ModelsImages/a5a52.jpg">
+                                        <img src="~/Uploads/ModelsImages/a5a52.jpg" alt="">
+                                    </a>
+                                </div>
+                            </div>*@
+                        </div>
+                        <div class="product-details-small nav mt-12 product-dec-slider owl-carousel">
+                            <a  href="#pro-details1" id="img1">
+                                <img src="~/Uploads/ModelsImages/@ViewBag.img2" onclick="changeimgsrc('/Uploads/ModelsImages/@ViewBag.img2')" alt="">
+                            </a>
+                            <a href="#pro-details1">
+                                <img src="~/Uploads/ModelsImages/@ViewBag.img3" onclick="changeimgsrc('/Uploads/ModelsImages/@ViewBag.img3')" alt="">
+                            </a>
+                            <a href="#pro-details1">
+                                <img src="~/Uploads/ModelsImages/@ViewBag.img4" onclick="changeimgsrc('/Uploads/ModelsImages/@ViewBag.img4')" alt="">
+                            </a>
+                            <a href="#pro-details1">
+                                <img src="~/Uploads/ModelsImages/@ViewBag.img5" onclick="changeimgsrc('/Uploads/ModelsImages/@ViewBag.img5')" alt="">
+                            </a>
+                            <a href="#pro-details1">
+                                <img src="~/Uploads/ModelsImages/@ViewBag.img6" onclick="changeimgsrc('/Uploads/ModelsImages/@ViewBag.img6')" alt="">
+                            </a>
+                            <a href="#pro-details1">
+                                <img src="~/Uploads/ModelsImages/@ViewBag.img7" onclick="changeimgsrc('/Uploads/ModelsImages/@ViewBag.img7')" alt="">
+                            </a>
+                            <a href="#pro-details1">
+                                <img src="~/Uploads/ModelsImages/@ViewBag.img8" onclick="changeimgsrc('/Uploads/ModelsImages/@ViewBag.img8')" alt="">
+                            </a>
+                            <a href="#pro-details1">
+                                <img src="~/Uploads/ModelsImages/@ViewBag.img9" onclick="changeimgsrc('/Uploads/ModelsImages/@ViewBag.img9')" alt="">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="product-details-content">
+                    <h2>@Model.ProductName</h2>
+                    <div class="quick-view-rating">
+                        <i class="fa fa-star reting-color"></i>
+                        <i class="fa fa-star reting-color"></i>
+                        <i class="fa fa-star reting-color"></i>
+                        <i class="fa fa-star reting-color"></i>
+                        <i class="fa fa-star reting-color"></i>
+                        <span> ( 01 Customer Review )</span>
+                    </div>
+                    <div class="product-price">
+                        <span>@Model.Price</span>
+                    </div>
+                    <div class="product-overview">
+                        <h5 class="pd-sub-title">Model Overview</h5>
+                        <p>@Model.ProductOverview</p>
+                    </div>
+                    <div class="product-color">
+                        <h5 class="pd-sub-title">Model Date</h5>
+                       
+                            <p>@Model.DateofPurchase</p>
+                       
+                    </div>
+                    <div class="quickview-plus-minus">
+                        <div class="cart-plus-minus">
+                            <input type="text" value="02" name="qtybutton" class="cart-plus-minus-box">
+                        </div>
+                        <div class="quickview-btn-cart">
+                            @*<a class="btn-style cr-btn" href="#"><span>add to cart</span></a>*@
+                            @Html.ActionLink("Sold", "Sold", "Product", new { id = Model.ProductID}, new { @class = "btn-style cr-btn" })
+
+                        </div>
+                        <div class="quickview-btn-wishlist">
+                            <a class="btn-hover cr-btn" href="#"><span><i class="icofont icofont-heart-alt"></i></span></a>
+                        </div>
+                    </div>
+                    <div class="product-categories">
+                        <h5 class="pd-sub-title">KM Driven</h5>
+                        <ul>
+                            <li>
+                                <a href="#">@Model.KMDriven</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="product-share">
+                        <h5 class="pd-sub-title">Share</h5>
+                        <ul>
+                            <li>
+                                <a href="#"><i class="icofont icofont-social-facebook"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icofont icofont-social-twitter"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="icofont icofont-social-pinterest"></i></a>
+                            </li>
+                            <li>
+                                <a href="#"> <i class="icofont icofont-social-instagram"></i></a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="newsletter-area">
+    <div class="container">
+        <div class="newsletter-wrapper-all theme-bg-2">
+            <div class="row">
+                <div class="col-lg-5 col-12 col-md-12">
+                    <div class="newsletter-img bg-img" style="background-image: url(/Content/img/banner/newsletter-bg.png)">
+                        <img alt="image" src="/Content/img/team/newsletter-img.png">
+                    </div>
+                </div>
+                <div class="col-lg-7 col-12 col-md-12">
+                    <div class="newsletter-wrapper text-center">
+                        <div class="newsletter-title">
+                            <h3>Subscribe our newsletter</h3>
+                        </div>
+                        <div id="mc_embed_signup" class="subscribe-form">
+                            <form action="#" method="post" id="#" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+                                <div id="mc_embed_signup_scroll" class="mc-form">
+                                    <input type="email" value="" name="EMAIL" class="email" placeholder="Enter your email here..." required>
+                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <div class="mc-news" aria-hidden="true"><input type="text" name="b_6bbb9b6f5827bd842d9640c82_05d85f18ef" tabindex="-1" value=""></div>
+                                    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script language="javascript">
+    function changeimgsrc(imgsrc)
+    {
+        document.getElementById("mainzoom").setAttribute("href", imgsrc);
+      //  document.getElementById('mainzoom').href = imgsrc;
+        document.getElementById('mainimg').src = imgsrc;
+      //  alert(document.getElementById('mainimg').href.toString())
+        return false;
+    }
+</script>
+

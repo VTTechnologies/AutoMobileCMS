@@ -14,17 +14,18 @@ namespace AutoMobileCMS.DAL.DBModel
     
     public partial class TblCompany
     {
+        public TblCompany()
+        {
+            this.TblUsers = new HashSet<TblUser>();
+        }
+    
         public int CompanyID { get; set; }
-        public Nullable<int> UserID { get; set; }
         public string CompanyName { get; set; }
         public string Address { get; set; }
-        public string Logo { get; set; }
+        public Nullable<decimal> ContactNo { get; set; }
+        public string EmailID { get; set; }
         public Nullable<bool> Status { get; set; }
-        public string CreatedBy { get; set; }
-        public Nullable<System.DateTime> CreatedOn { get; set; }
-        public string UpdatedBy { get; set; }
-        public Nullable<System.DateTime> UpdatedOn { get; set; }
     
-        public virtual TblUser TblUser { get; set; }
+        public virtual ICollection<TblUser> TblUsers { get; set; }
     }
 }

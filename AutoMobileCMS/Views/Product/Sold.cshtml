@@ -1,0 +1,127 @@
+﻿@model AutoMobileCMS.DAL.DBModel.TblSold
+
+@{
+    ViewBag.Title = "Sold";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Sold Models
+        </h1>
+    </section>
+
+    <section class="content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="box box-primary">
+
+                    @using (Html.BeginForm("Sold", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                    {
+                        @Html.AntiForgeryToken()
+                        <div class="box-body">
+                            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                    <div class="form-group">
+                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                            @Html.LabelFor(model => model.CustomerName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        </div>
+                                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                            @Html.EditorFor(model => model.CustomerName, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.CustomerName, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                               
+                                    <div class="form-group">
+                                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                            @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                        </div>
+                                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                            @Html.TextAreaFor(model => model.Description, 5, 56, new { htmlAttributes = new { @class = "form-control" } })
+                                            @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <label>Please image of owner with car</label>
+                                    </div>
+                                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                                        <img id="img1" src="" alt="your image" class="img-thumbnail col-md-12" style="height:250px" />
+                                        <input type="file" value="Upload" id="imgupload1" name="imgupload1" onchange="readURL(this,'img1');" class="btn btn-primary col-md-7" />
+                                        <input type="button" id="btnimg1cencal" onclick="removeimg('img1','imgupload1')" value="Cancel" class="btn btn-danger col-md-4 pull-right" />
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Create" class="btn btn-default" onclick="return validation();" />
+
+                                </div>
+                            </div>
+                        </div>
+
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+</div>
+@if (TempData["Message"] != null)
+{
+    <script type="text/javascript">
+        debugger;
+        window.onload = function () {
+            alert('@TempData["Message"]');
+            window.location.href = "/@ViewBag.templatename/Shop/";
+        };
+    </script>
+}
+
+<script>
+
+
+    function removeimg(img, fileupld) {
+        debugger;
+        document.getElementById(img).removeAttribute('src');
+        document.getElementById(fileupld).value = "";
+
+    }
+    function readURL(input, id) {
+        //alert(id);
+
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            var vall = '#' + id;
+            // alert(vall);
+            if (id == 'img1') {
+                reader.onload = function (e) {
+                    $(vall)
+                        .attr('src', e.target.result);
+                };
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+
+    }
+    function validation() {
+        if ($('#imgupload1').val() == '' ) {
+            alert("Please select owner image");
+            return false;
+        }
+        return true;
+    }
+</script>
+

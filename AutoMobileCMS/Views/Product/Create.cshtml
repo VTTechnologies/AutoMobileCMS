@@ -1,0 +1,142 @@
+﻿@model AutoMobileCMS.Models.ProductViewModel
+
+@{
+    ViewBag.Title = "Create";
+  //  Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<div class="content-wrapper">
+    <section class="content-header">
+        <h1>
+            Create Models
+        </h1>
+    </section>
+    <section class="content">
+        <div class="row">
+              <div class="col-md-12">
+                  <div class="box box-primary">
+                    
+                      @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { enctype = "multipart/form-data", @class = "form-horizontal" }))
+                      {
+                          @Html.AntiForgeryToken()
+                          <div class="box-body">
+
+
+                              <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                                  @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+                                  @*<div class="form-group">
+                        <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                            @Html.LabelFor(model => model.ModelID, htmlAttributes: new { @class = "control-label col-md-2" })
+                        </div>
+                        <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                            @Html.EditorFor(model => model.ModelID, new { htmlAttributes = new { @class = "form-control" } })
+                            @Html.ValidationMessageFor(model => model.ModelID, "", new { @class = "text-danger" })
+                        </div>
+                        </div>*@
+
+                                  <div class="form-group">
+                                      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                          @Html.LabelFor(model => model.ProductName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                      </div>
+                                      <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                          @Html.EditorFor(model => model.ProductName, new { htmlAttributes = new { @class = "form-control" } })
+                                          @Html.ValidationMessageFor(model => model.ProductName, "", new { @class = "text-danger" })
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                          @Html.LabelFor(model => model.ProductOverview, htmlAttributes: new { @class = "control-label col-md-2" })
+                                      </div>
+                                      <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                          @Html.TextAreaFor(model => model.ProductOverview, 5, 58, new { htmlAttributes = new { @class = "form-control" } })
+                                          @Html.ValidationMessageFor(model => model.ProductOverview, "", new { @class = "text-danger" })
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                          @Html.LabelFor(model => model.Price, htmlAttributes: new { @class = "control-label col-md-2" })
+                                      </div>
+                                      <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                          @Html.EditorFor(model => model.Price, new { htmlAttributes = new { @class = "form-control" } })
+                                          @Html.ValidationMessageFor(model => model.Price, "", new { @class = "text-danger" })
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                          @Html.LabelFor(model => model.BrandID, htmlAttributes: new { @class = "control-label col-md-2" })
+                                      </div>
+                                      <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+
+                                          @Html.DropDownListFor(model => model.BrandID, TempData["brands"] as List<SelectListItem>, "SELECT Brand", new { @class = "form-control", @Id = "ddlbrand" })
+                                          @Html.ValidationMessageFor(model => model.BrandID, "", new { @class = "text-danger" })
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                          @Html.LabelFor(model => model.DateofPurchase, htmlAttributes: new { @class = "control-label col-md-2" })
+                                      </div>
+                                      <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                          @Html.EditorFor(model => model.DateofPurchase, new { htmlAttributes = new { @class = "form-control" } })
+                                          @Html.ValidationMessageFor(model => model.DateofPurchase, "", new { @class = "text-danger" })
+                                      </div>
+                                  </div>
+
+                                  <div class="form-group">
+                                      <div class="col-xs-12 col-sm-3 col-md-3 col-lg-3">
+                                          @Html.LabelFor(model => model.KMDriven, htmlAttributes: new { @class = "control-label col-md-2" })
+                                      </div>
+                                      <div class="col-xs-12 col-sm-9 col-md-9 col-lg-9 ui input">
+                                          @Html.EditorFor(model => model.KMDriven, new { htmlAttributes = new { @class = "form-control" } })
+                                          @Html.ValidationMessageFor(model => model.KMDriven, "", new { @class = "text-danger" })
+                                      </div>
+                                  </div>
+                                  <div class="form-group">
+                                      <div class="col-md-offset-2 col-md-10">
+                                          <input type="submit" value="Next" class="btn btn-primary pull-right" />
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      }
+                  </div>
+            </div> 
+            </div>
+        </section>
+        </div>
+<script src="~/Scripts/adminlte/components/datatables.net/js/jquery.dataTables.min.js"></script>
+
+@if (ViewBag.Message != null)
+{
+    <script type="text/javascript">
+        window.onload = function () {
+            debugger
+            alert("submited successfully");
+            window.location.href = "/Models/Index/";
+        };
+    </script>
+}
+
+<script>
+    $(document).ready(function () {
+        $("#DateofPurchase").datepicker({
+            dateFormat: "dd-mm-yy",
+            changeMonth: true,
+            changeYear: true
+        });
+    });
+
+    function removeimg(img, fileupld) {
+        debugger;
+        document.getElementById(img).removeAttribute('src');
+        document.getElementById(fileupld).value = "";
+
+    }
+   
+
+
+</script>

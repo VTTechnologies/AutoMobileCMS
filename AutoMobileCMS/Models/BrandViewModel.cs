@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using AutoMobileCMS.DAL.DBModel;
 
 
-namespace AutoMobileCMS.Models
+namespace AutoMobileCMS.Modelss
 {
     public class BrandViewModel
     {
@@ -16,6 +17,6 @@ namespace AutoMobileCMS.Models
         public Nullable<System.DateTime> CreatedOn { get; set; }
         public string UpdatedBy { get; set; }
         public Nullable<System.DateTime> UpdatedOn { get; set; }
-        public virtual ICollection<ModelsViewModel> TblModels { get; set; }
+        public virtual ICollection<TblProduct> TblProduct { get; set; }
     }
 }

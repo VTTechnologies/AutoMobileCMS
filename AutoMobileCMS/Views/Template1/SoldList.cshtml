@@ -1,0 +1,200 @@
+﻿@model IEnumerable<AutoMobileCMS.Models.SoldViewModel>
+@{
+    ViewBag.Title = "Shop";
+    Layout = "~/Views/Shared/_LayoutTemplate1.cshtml";
+
+}
+@using AutoMobileCMS.Helpers;
+
+<div class="breadcrumb-area pb-170" style="background-image: url(/Content/img/banner/carbaner1.jpg)">
+    <div class="container-fluid">
+        <div class="breadcrumb-content text-center">
+            <h2>Sold Models</h2>
+            <ul>
+                <li>
+                    <a href="#">home</a>
+                </li>
+                <li>Sold Models</li>
+            </ul>
+        </div>
+    </div>
+</div>
+<div class="shop-wrapper fluid-padding-2 pt-120 pb-150">
+    <div class="container-fluid">
+        <div class="row">
+            @*<div class="col-lg-3">
+                <div class="product-sidebar-area pr-60">
+                   
+                
+                  
+                    
+                    <div class="sidebar-widget mb-45">
+                        <h3 class="sidebar-widget">product tags</h3>
+                        <div class="product-tags">
+                            <ul>
+                                <li><a href="#">Clothing</a></li>
+                                <li><a href="#">Bag</a></li>
+                                <li><a href="#">Women</a></li>
+                                <li><a href="#">Tie</a></li>
+                                <li><a href="#">Women</a></li>
+                                <li><a href="#">Dress</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget mb-55">
+                        <h3 class="sidebar-widget">compare</h3>
+                        <div class="product-compare">
+                            <ul>
+                                <li><a href="#">Gloriori GSX 250 R <span><i class="fa fa-trash-o" aria-hidden="true"></i></span></a></li>
+                                <li><a href="#">Klager GSX 250 R<span><i class="fa fa-trash-o" aria-hidden="true"></i></span></a></li>
+                                <li><a href="#">Maxclon ZPE 54 <span><i class="fa fa-trash-o" aria-hidden="true"></i></span></a></li>
+                            </ul>
+                        </div>
+                        <div class="compare-text-btn">
+                            <div class="compare-text">
+                                <h5>Clear All</h5>
+                            </div>
+                            <div class="compare-btn">
+                                <a href="#">Compare</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sidebar-widget">
+                        <h3 class="sidebar-widget">best seller</h3>
+                        <div class="best-seller">
+                            <div class="single-best-seller">
+                                <div class="best-seller-img">
+                                    <a href="#"><img src="/Content/img/product/product-12.jpg" alt=""></a>
+                                </div>
+                                <div class="best-seller-text">
+                                    <h3><a href="#">Minimal White Shoes</a></h3>
+                                    <span>$39.9</span>
+                                </div>
+                            </div>
+                            <div class="single-best-seller">
+                                <div class="best-seller-img">
+                                    <a href="#"><img src="/Content/img/product/product-13.jpg" alt=""></a>
+                                </div>
+                                <div class="best-seller-text">
+                                    <h3><a href="#">Minimal White Shoes</a></h3>
+                                    <span>$39.9</span>
+                                </div>
+                            </div>
+                            <div class="single-best-seller">
+                                <div class="best-seller-img">
+                                    <a href="#"><img src="/Content/img/product/product-14.jpg" alt=""></a>
+                                </div>
+                                <div class="best-seller-text">
+                                    <h3><a href="#">Minimal White Shoes</a></h3>
+                                    <span>$39.9</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>*@
+            <div class="col-lg-12">
+                <div class="shop-topbar-wrapper">
+                    <div class="grid-list-options">
+                        <ul class="view-mode">
+                            <li class="active"><a href="#product-grid" data-view="product-grid"><i class="ti-layout-grid2"></i></a></li>
+                            <li><a href="#product-list" data-view="product-list"><i class="ti-view-list"></i></a></li>
+                        </ul>
+                    </div>
+                    <div class="product-sorting">
+                        <div class="shop-product-sorting nav">
+                            <a class="active" data-toggle="tab" href="#new-product">NEW BIKES </a>
+                            <a data-toggle="tab" href="#use-product"> USED BIKES </a>
+                            <a data-toggle="tab" href="#accessory-product">ACCESSORIES</a>
+                        </div>
+                        <div class="sorting sorting-bg-1">
+                            <form>
+                                <select class="select">
+                                    <option value="">Default softing </option>
+                                    <option value="">Sort by news</option>
+                                    <option value="">Sort by price</option>
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="grid-list-product-wrapper tab-content">
+                    <div id="new-product" class="product-grid product-view tab-pane active">
+                        <table class="table">
+                            <tr>
+                                <th>
+
+                                </th>
+                                <th>
+
+                                </th>
+                                <th>
+
+                                </th>
+                                <th></th>
+                            </tr>
+                            @if (Model != null)
+                            {
+                                int i = 0;
+                                //for (int i = 0; i < Model.Count(); i++)
+                                foreach (var item in Model)
+                                {
+                                    string imgpath = "/Uploads/SoldImages/" + item.ImagePath;
+                                    if (i == 0 || i % 3 == 0)
+                                    {
+                                        @:<tr>
+                                    }
+                                    <td>
+                                        <div class="product-img">
+                                            @*@Html.ImageActionLink("Details", "Details", "Product", null, new { @class = "img-responsive" }, imgpath)*@
+                                            <img id="img1" src="@imgpath" alt="your image" class="img-thumbnail" />
+                                            <div class="product-item-dec">
+                                               
+                                            </div>
+                                            <div class="product-action">
+                                                <a class="action-plus-2 p-action-none" title="Add To Cart" href="#">
+                                                    <i class=" ti-shopping-cart"></i>
+                                                </a>
+                                                <a class="action-cart-2" title="Wishlist" href="#">
+                                                    <i class=" ti-heart"></i>
+                                                </a>
+                                                <a class="action-reload" title="Quick View" data-toggle="modal" data-target="#exampleModal" href="#">
+                                                    <i class=" ti-zoom-in"></i>
+                                                </a>
+                                            </div>
+                                            <div class="product-content-wrapper">
+                                                <div class="product-title-spreed">
+                                                </div>
+                                                <div class="product-price">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    if (i % 3 == 2 || i == Model.Count() - 1)
+                                    {
+                                        @:</tr>
+	                                   }
+
+                                    i++;
+
+                                }
+                            }
+
+                        </table>
+                    </div>
+
+                    
+                </div>
+                <div class="paginations text-center mt-20">
+                    <ul>
+                        <li><a href="#"><i class="fa fa-angle-left"></i></a></li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li class="active"><a href="#"><i class="fa fa-angle-right"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
